@@ -52,11 +52,5 @@ namespace Festival.viewmodel
             get { return _selectedjob; }
             set { _selectedjob = value; OnPropertyChanged("SelectedJob"); }
         }
-<<<<<<< HEAD
-        
-        
-
-=======
->>>>>>> 15e65dc314323d0db0412bee0a93116d803f249c
     }
 }

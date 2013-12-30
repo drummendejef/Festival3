@@ -16,23 +16,15 @@ namespace Festival.model
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Company { get; set; }
-<<<<<<< HEAD
-        //public ContactPersonType JobRole { get; set; }
-=======
->>>>>>> 15e65dc314323d0db0412bee0a93116d803f249c
         public string JobRole { get; set; }
         public string City { get; set; }
         public string Street { get; set; }
         public int Zipcode { get; set; }
-<<<<<<< HEAD
-        public int Number { get; set; }
-=======
->>>>>>> 15e65dc314323d0db0412bee0a93116d803f249c
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Cellphone { get; set; }
 
-        
+
 
         //Ophalen Contactpersonen
         public static ObservableCollection<ContactPerson> GetContacts()
@@ -47,31 +39,7 @@ namespace Festival.model
                 ContactPerson contact = Create(record);
                 contacts.Add(contact);
             }
-<<<<<<< HEAD
-
-            return contacts; 
-        }
-
-        private static ContactPerson Create(IDataRecord record)
-        {
-            //Een nieuw contactpersoon aanmaken met alle bijbehorende gegevens.
-            return new ContactPerson()
-            {
-                ID = Convert.ToInt32(record["ID"].ToString()),
-                Name = record["Voornaam"].ToString(),
-                Surname = record["Naam"].ToString(),
-                Street = record["Straat_Nr"].ToString(),
-                City = record["Gemeente"].ToString(),
-                Zipcode = Convert.ToInt32(record["Postcode"].ToString()),
-                Cellphone = record["GSM"].ToString(),
-                Phone = record["Telefoon"].ToString(),
-                Email = record["Email"].ToString(),
-                JobRole = ContactPersonType.GetContactType(Convert.ToInt32(record["JobID"])).ToString(),
-                Company = record["Bedrijf"].ToString()
-            };
-=======
-            return contacts; 
->>>>>>> 15e65dc314323d0db0412bee0a93116d803f249c
+            return contacts;
         }
 
         //Het aanmaken van de contactpersoon (alle gegevens invullen)

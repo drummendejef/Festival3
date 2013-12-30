@@ -78,8 +78,6 @@ namespace Festival.model
             return null;
         }
 
-<<<<<<< HEAD
-=======
         //Omzetten contacttype naam naar ID
         public static int GetContactTypeID(string jobrole)
         {
@@ -92,7 +90,6 @@ namespace Festival.model
             return 0;
         }
 
->>>>>>> 15e65dc314323d0db0412bee0a93116d803f249c
         //Leesbaar maken
         public override string ToString()
         {
