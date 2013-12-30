@@ -16,6 +16,7 @@ namespace Festival.viewmodel
             Pages.Add(new StagesVM());
             Pages.Add(new TicketsVM());
             Pages.Add(new StartPageVM());
+            Pages.Add(new SettingsVM());
 
             CurrentPage = Pages[0];
 
