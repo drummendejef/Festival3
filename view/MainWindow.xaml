@@ -1,0 +1,44 @@
+﻿<Window x:Class="Festival.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:Festival.viewmodel"
+        xmlns:v="clr-namespace:Festival.view"
+        Title="Project: Business Applications (Joren Vandamme - 2NMCT2)" Height="500" Width="650">
+    <Window.DataContext>
+        <vm:ApplicationVM/>
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type vm:ContactPersonenVM}">
+            <v:ContactPersonen/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:StagesVM}">
+            <v:Stages/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:TicketsVM}">
+            <v:Ticketing/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:StartPageVM}">
+            <v:StartPage/>
+        </DataTemplate>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ItemsControl ItemsSource="{Binding Pages}" Grid.RowSpan="2" >
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Margin="8" Content="{Binding Name}" Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding}" Height="30"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <ContentControl Grid.Column="1" Content="{Binding CurrentPage}" Grid.Row="1"/>
+
+    </Grid>
+</Window>

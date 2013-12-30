@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Festival.view.Ticketing"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        mc:Ignorable="d" 
+        d:DesignHeight="300" d:DesignWidth="400">
+    
+    <Grid ToolTip="Kies Ticket">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <ComboBox HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="102" ToolTip="Kies Ticket"/>
+        <TextBlock HorizontalAlignment="Left" Height="19" Margin="10,10,0,0" TextWrapping="Wrap" Text="Ticketing" VerticalAlignment="Top" Width="56"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="29,67,0,0" TextWrapping="Wrap" Text="Totaal aantal" VerticalAlignment="Top" Width="83"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="29,95,0,0" TextWrapping="Wrap" Text="Resterend" VerticalAlignment="Top" Width="83"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="29,123,0,0" TextWrapping="Wrap" Text="Prijs" VerticalAlignment="Top" Width="83"/>
+        <StackPanel HorizontalAlignment="Left" Height="82" Margin="6,178,0,0" VerticalAlignment="Top" Width="130" ToolTip="Overzicht"/>
+        <TextBlock TextWrapping="Wrap" Text="Overzicht tickets" Margin="6,167,10,87"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,13,0,0" TextWrapping="Wrap" Text="Bestellen" VerticalAlignment="Top" Width="92"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="102" ToolTip="Ticket"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Width="102" ToolTip="aantal"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,100,0,0" TextWrapping="Wrap" Text="Naam" VerticalAlignment="Top" Width="102"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,128,0,0" TextWrapping="Wrap" Text="Voornaam" VerticalAlignment="Top" Width="102"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,156,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="102"/>
+        <Button Content="Bestel" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,188,0,0" VerticalAlignment="Top" Width="73"/>
+
+    </Grid>
+</UserControl>

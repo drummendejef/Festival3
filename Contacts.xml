@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<contacts version="1.0" timestamp="1378214275">
+<contact><id>0</id><naam>Jef</naam><achternaam>Henkens</achternaam><bedrijf>Howest</bedrijf><job>1</job<stad>Kortrijk</stad><straat>Rechtelaan</straat><huisnr>5</huisnr><email>jefke@howest.be</email><telefoon>023456789</telefoon><gsm>0499112233</gsm></contact>
+<contact><id>1</id><naam>Kristof</naam><achternaam>Van Daele</achternaam><bedrijf>Kopazio</bedrijf><stad>Mechelen</stad><straat>Krommestraat</straat><huisnr>10</huisnr><email>Krikke@kopazio.be</email><telefoon>023456789</telefoon><gsm>0499112233</gsm></contact>
+</contacts>
