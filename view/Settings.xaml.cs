@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Festival.model;
 
 namespace Festival.view
 {
@@ -27,7 +28,7 @@ namespace Festival.view
 
         private void CommandBinding_Save(object sender, ExecutedRoutedEventArgs e)
         {
-
+            ContactPersonType.Add(AddJob.Text);
         }
     }
 }

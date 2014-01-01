@@ -97,5 +97,16 @@ namespace Festival.model
             result += Name;
             return result;
         }
+
+        //Nieuwe job in Database aanmaken
+        public static void Add(string jobnaam)
+        {
+            string sql = "INSERT INTO Jobs (Job) VALUES (@Jobnaam)";
+            DbParameter param1 = Database.AddParameter("@Jobnaam", jobnaam);
+
+            Database.ModifyData(sql, param1);
+
+            Console.WriteLine("Nieuw jobtype opgeslagen");
+        }
     }
 }
