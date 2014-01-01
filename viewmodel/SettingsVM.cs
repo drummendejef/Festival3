@@ -12,5 +12,7 @@ namespace Festival.viewmodel
         {
             get { return "SettingsVM"; }
         }
+
+
     }
 }

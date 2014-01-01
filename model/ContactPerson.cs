@@ -72,14 +72,28 @@ namespace Festival.model
         }
 
         //Opslaan/Updaten van de gegevens
-        public static void UpdateContactPersons(int id, string name)
+        //public static void UpdateContactPersons(int id, string name, string surname, string street, string city, int zipcode, string cellphone, string phone, string email, string jobrole, string company)
+        public static void UpdateContactPersons(ContactPerson p)
         {
+            int jobroleid = ContactPersonType.GetContactTypeID(p.JobRole);
+
             DbTransaction trans = Database.BeginTransAction();
 
-            string sql = "UPDATE Werknemers SET Naam=@Name WHERE ID=@ID";
-            DbParameter par1 = Database.AddParameter("@Name", name);
-            DbParameter par2 = Database.AddParameter("@ID", id);
-            Database.ModifyData(trans, sql, par1, par2);
+            string sql = "UPDATE Werknemers SET Voornaam=@Name, Naam=@Surname, Straat_Nr=@Street, Gemeente=@City, Postcode=@Zipcode, GSM=@Cellphone, JobID=@Jobrole, Bedrijf=@Company WHERE ID=@ID";
+
+
+            DbParameter par1 = Database.AddParameter("@Name", p.Name);
+            DbParameter par2 = Database.AddParameter("@ID", p.ID);
+            DbParameter par3 = Database.AddParameter("@Surname", p.Surname);
+            DbParameter par4 = Database.AddParameter("@Street", p.Street);
+            DbParameter par5 = Database.AddParameter("@City", p.City);
+            DbParameter par6 = Database.AddParameter("@Zipcode", p.Zipcode);
+            DbParameter par7 = Database.AddParameter("@Cellphone", p.Cellphone);
+            DbParameter par8 = Database.AddParameter("@Phone", p.Phone);
+            DbParameter par9 = Database.AddParameter("@Email", p.Email);
+            DbParameter par10 = Database.AddParameter("@Jobrole", jobroleid);
+            DbParameter par11 = Database.AddParameter("@Company", p.Company);
+            Database.ModifyData(sql, par1, par2, par3, par4, par5, par6, par7, par8, par9, par10, par11);
 
             trans.Commit();
 

@@ -31,7 +31,7 @@ namespace Festival.view
             if (Contactpersonen.SelectedItems.Count > 0)//Ja
             {
                 ContactPerson b =  (ContactPerson)Contactpersonen.SelectedItem;
-                //ContactPerson.UpdateContactPersons(b);
+                ContactPerson.UpdateContactPersons(b);
             }
             else //neen
             {

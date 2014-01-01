@@ -24,5 +24,10 @@ namespace Festival.view
         {
             InitializeComponent();
         }
+
+        private void CommandBinding_Save(object sender, ExecutedRoutedEventArgs e)
+        {
+
+        }
     }
 }
