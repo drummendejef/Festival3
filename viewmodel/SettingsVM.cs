@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Festival.model;
 
 namespace Festival.viewmodel
 {
@@ -13,6 +14,18 @@ namespace Festival.viewmodel
             get { return "Settings"; }
         }
 
+        public SettingsVM()
+        {
+            _festivalinfo = Festival.model.Festival.GetFestivals()[0];
+        }
+
+        private Festival.model.Festival _festivalinfo;
+        public Festival.model.Festival FestivalInfo
+        {
+            get { return _festivalinfo; }
+            set { _festivalinfo = value; OnPropertyChanged("FestivalInfo"); }
+        }
+        
 
     }
 }

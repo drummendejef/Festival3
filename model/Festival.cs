@@ -44,6 +44,41 @@ namespace Festival.model
             };
         }
 
+        //Festivalnaam opslaan.
+        public static void SaveN(string Festivalnaam)
+        {
+            string sql = "UPDATE Festival SET FestivalNaam=@Festivalnaam WHERE ID=1";
+
+            DbParameter par1 = Database.AddParameter("@Festivalnaam", Festivalnaam);
+            Database.ModifyData(sql, par1);
+        }
+
+        //Festivalbeschrijving opslaan
+        public static void SaveD(string Festivalbeschrijving)
+        {
+            string sql = "UPDATE Festival SET Omschrijving=@Festivalbeschrijving WHERE ID=1";
+
+            DbParameter par1 = Database.AddParameter("@Festivalbeschrijving", Festivalbeschrijving);
+            Database.ModifyData(sql, par1);
+        }
+
+        //Festival Startdatum opslaan
+        public static void SaveS(DateTime datum)
+        {
+            string sql = "UPDATE Festival SET Startdatum=@startdatum WHERE ID=1";
+
+            DbParameter par1 = Database.AddParameter("@startdatum", datum);
+            Database.ModifyData(sql, par1);
+        }
+
+        //Festival Einddatum opslaan
+        public static void SaveE(DateTime datum)
+        {
+            string sql = "UPDATE Festival SET Einddatum=@einddatum WHERE ID=1";
+
+            DbParameter par1 = Database.AddParameter("@einddatum", datum);
+            Database.ModifyData(sql, par1);
+        }
         
     }
 }

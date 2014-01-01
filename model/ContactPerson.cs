@@ -77,7 +77,7 @@ namespace Festival.model
         {
             int jobroleid = ContactPersonType.GetContactTypeID(p.JobRole);
 
-            DbTransaction trans = Database.BeginTransAction();
+            //DbTransaction trans = Database.BeginTransAction();
 
             string sql = "UPDATE Werknemers SET Voornaam=@Name, Naam=@Surname, Straat_Nr=@Street, Gemeente=@City, Postcode=@Zipcode, GSM=@Cellphone, JobID=@Jobrole, Bedrijf=@Company WHERE ID=@ID";
 
@@ -95,9 +95,9 @@ namespace Festival.model
             DbParameter par11 = Database.AddParameter("@Company", p.Company);
             Database.ModifyData(sql, par1, par2, par3, par4, par5, par6, par7, par8, par9, par10, par11);
 
-            trans.Commit();
+            //trans.Commit();
 
-            Database.ReleaseConnection(trans.Connection);
+            //Database.ReleaseConnection(trans.Connection);
         }
 
         //Nieuwe contactpersoon toevoegen

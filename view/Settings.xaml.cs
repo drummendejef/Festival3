@@ -30,5 +30,24 @@ namespace Festival.view
         {
             ContactPersonType.Add(AddJob.Text);
         }
+
+        //Doorverwijzen naar Festival.cs om de naam op te slaan
+        private void festivalnaam_opslaan(object sender, RoutedEventArgs e)
+        {
+            Festival.model.Festival.SaveN(FestivalNaam.Text);
+        }
+
+        //Doorverwijzen naar Festival.cs om de beschrijving op te slaan
+        private void festivalbeschrijving_opslaan(object sender, RoutedEventArgs e)
+        {
+            Festival.model.Festival.SaveD(FestivalBeschrijving.Text);
+        }
+
+        private void festivaleinddatum_opslaan(object sender, RoutedEventArgs e)
+        {
+            Festival.model.Festival.SaveE(Convert.ToDateTime(Einddatum.Text));
+        }
+
+        
     }
 }
