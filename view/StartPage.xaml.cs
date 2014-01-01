@@ -23,8 +23,5 @@ namespace Festival.view
         {
             InitializeComponent();
         }
-
-
-
     }
 }

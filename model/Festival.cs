@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,26 +15,33 @@ namespace Festival.model
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string Name { get; set; }
+        public string Beschrijving { get; set; }
 
         public static ObservableCollection<Festival> GetFestivals()
         {
             ObservableCollection<Festival> festivals = new ObservableCollection<Festival>();
+            DbDataReader reader = Database.GetData("SELECT * FROM Festival");
 
-            //Create the XmlDocument.
-            XmlDocument doc = new XmlDocument();
-            doc.Load("Festivals.xml");
-            //Create the list.
-            XmlNodeList elemList = doc.GetElementsByTagName("festival");
-            for (int i = 0; i < elemList.Count; i++)
+            //Rij overlopen en festival informatie ophalen
+            foreach (DbDataRecord record in reader)
             {
-                Festival festival = new Festival();
-                festival.Name = elemList[i]["naam"].InnerText;
-                festival.StartDate = Convert.ToDateTime(elemList[i]["begin"].InnerText);
-                festival.EndDate = Convert.ToDateTime(elemList[i]["eind"].InnerText);
-
+                Festival festival = Create(record);
                 festivals.Add(festival);
             }
             return festivals;
+            
+        }
+
+        //Festivalgegevens aanmaken
+        private static Festival Create(IDataRecord record)
+        {
+            return new Festival()
+            {
+                Name = record["Festivalnaam"].ToString(),
+                Beschrijving = record["Omschrijving"].ToString(),
+                StartDate = Convert.ToDateTime(record["Startdatum"]),
+                EndDate = Convert.ToDateTime(record["Einddatum"].ToString())
+            };
         }
 
         

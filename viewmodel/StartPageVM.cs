@@ -11,28 +11,23 @@ namespace Festival.viewmodel
 {
     class StartPageVM : ObservableObject, IPage
     {
-        public string Name
-        {
-            get { return "StartPageVM"; }
-        }
-
         public StartPageVM()
         {
-            //_FestivalList = Festival.model.Festival.GetFestivals();
+            //Info van het festival via de klasse Festival gaan ophalen in de database
+            FestivalInfo = Festival.model.Festival.GetFestivals()[0];
+        }
+        
+        public string Name
+        {
+            get { return "StartPage"; }
         }
 
-        private ObservableCollection<Festival.model.Festival> _FestivalList;
-        public ObservableCollection<Festival.model.Festival> FestivalList
+        //De Databinding van de festivalinfo
+        private Festival.model.Festival _festivalinfo;
+        public Festival.model.Festival FestivalInfo
         {
-            get { return _FestivalList; }
-            set { _FestivalList = value; OnPropertyChanged("FestivalList"); }
-        }
-
-        private Festival.model.Festival _selectedFestival;
-        public Festival.model.Festival SelectedFestival
-        {
-            get { return _selectedFestival; }
-            set { _selectedFestival = value; OnPropertyChanged("SelectedFestival"); }
-        }
+            get { return _festivalinfo; }
+            set { _festivalinfo = value; OnPropertyChanged("FestivalInfo"); }
+        }   
     }
 }

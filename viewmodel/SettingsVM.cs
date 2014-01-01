@@ -10,7 +10,7 @@ namespace Festival.viewmodel
     {
         public string Name
         {
-            get { return "SettingsVM"; }
+            get { return "Settings"; }
         }
 
 

@@ -11,11 +11,11 @@ namespace Festival.viewmodel
     class ApplicationVM : ObservableObject
     {
         public ApplicationVM()
-        {            
+        {
+            Pages.Add(new StartPageVM());
             Pages.Add(new ContactPersonenVM());
             Pages.Add(new StagesVM());
             Pages.Add(new TicketsVM());
-            Pages.Add(new StartPageVM());
             Pages.Add(new SettingsVM());
 
             CurrentPage = Pages[0];
