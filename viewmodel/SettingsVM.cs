@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ using Festival.model;
 
 namespace Festival.viewmodel
 {
-    class SettingsVM : ObservableObject, IPage
+    class SettingsVM : ObservableObject, IPage, INotifyPropertyChanged
     {
         public string Name
         {

@@ -24,9 +24,9 @@
         <Label Content="Festivalnaam:" Grid.Column="2" Margin="12.333,0,12.333,30" Height="25" VerticalAlignment="Bottom"/>
         <TextBox x:Name="ffestivalnaam" Grid.Column="2" Margin="10,0,10,5" TextWrapping="Wrap" Text="{Binding FestivalInfo.Name}" Height="19" VerticalAlignment="Bottom" ToolTip="Festival Naam" IsEnabled="False"/>
         <Label Content="Startdag" Grid.Column="1" Margin="10,0,9.667,5" VerticalAlignment="Bottom" Height="25"/>
-        <DatePicker x:Name="fStartDag" VerticalAlignment="Top" Margin="10,0,10,0" Grid.Column="1" FirstDayOfWeek="Monday" ToolTip="Selecteer startdatum festival" Text="{Binding FestivalInfo.StartDate}" Grid.Row="1" IsEnabled="False" Height="24"/>
+        <DatePicker x:Name="fStartDag" VerticalAlignment="Top" Margin="10,0,10,0" Grid.Column="1" FirstDayOfWeek="Monday" ToolTip="Selecteer startdatum festival" Text="{Binding FestivalInfo.StartDate, StringFormat='dd MMM yyyy'}" Grid.Row="1" IsEnabled="False" Height="24"/>
         <Label Content="Einddag" Grid.Column="3" Margin="10,0,10,5" VerticalAlignment="Bottom" Height="25"/>
-        <DatePicker x:Name="fEindDag" Margin="10,0,10,0" Grid.Column="3" FirstDayOfWeek="Monday"  ToolTip="Selecteer einddatum festival" Text="{Binding FestivalInfo.EndDate}" Grid.Row="1" Height="24" VerticalAlignment="Top" IsEnabled="False" ForceCursor="True"/>
+        <DatePicker x:Name="fEindDag" Margin="10,0,10,0" Grid.Column="3" FirstDayOfWeek="Monday"  ToolTip="Selecteer einddatum festival" Text="{Binding FestivalInfo.EndDate, StringFormat='dd MMM yyyy'}" Grid.Row="1" Height="24" VerticalAlignment="Top" IsEnabled="False" ForceCursor="True"/>
         <Label Content="Beschrijving:" Grid.Column="1" HorizontalAlignment="Left" Margin="12,30,0,0" Grid.Row="1" VerticalAlignment="Top" Width="93"/>
         <TextBlock Grid.ColumnSpan="3" Grid.Column="1" Height="69" Margin="20,55,20,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Text="{Binding FestivalInfo.Beschrijving}"/>
         

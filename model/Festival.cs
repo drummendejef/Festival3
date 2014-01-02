@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
@@ -10,10 +11,16 @@ using System.Xml;
 
 namespace Festival.model
 {
-    class Festival
+    class Festival : INotifyPropertyChanged
     {
         public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        private DateTime _enddate;
+        public DateTime EndDate
+        {
+            get { return _enddate; }
+            set { _enddate = value; OnPropertyChanged("EndDate"); }
+        }
+        
         public string Name { get; set; }
         public string Beschrijving { get; set; }
 
@@ -78,6 +85,20 @@ namespace Festival.model
 
             DbParameter par1 = Database.AddParameter("@einddatum", datum);
             Database.ModifyData(sql, par1);
+
+            Console.WriteLine("Einddatum opgeslagen" + datum);
+        }
+
+        /* ----------------------------------------------------------------- */
+        // PROPERTY CHANGED EVENTHANDLER
+        /* ----------------------------------------------------------------- */
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
         
     }

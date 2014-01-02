@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Festival.model;
 using System.Windows.Controls;
+using System.ComponentModel;
 
 namespace Festival.viewmodel
 {
-    class StartPageVM : ObservableObject, IPage
+    class StartPageVM : ObservableObject, IPage, INotifyPropertyChanged
     {
         public StartPageVM()
         {

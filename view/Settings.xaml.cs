@@ -48,6 +48,11 @@ namespace Festival.view
             Festival.model.Festival.SaveE(Convert.ToDateTime(Einddatum.Text));
         }
 
+        private void festivalstartdatum_opslaan(object sender, RoutedEventArgs e)
+        {
+            //Opslaan startdatum
+        }
+
         
     }
 }

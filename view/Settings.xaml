@@ -28,17 +28,16 @@
         <Label Content="Omschrijving" Margin="10,54,10,0" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox x:Name="FestivalBeschrijving" Height="85" Margin="10,80,8,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding FestivalInfo.Beschrijving}" VerticalAlignment="Top" Cursor="None" LostFocus="festivalbeschrijving_opslaan"/>
         <Label Content="Startdatum" Margin="10,170,8,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <DatePicker Margin="10,195,21,0" Grid.Row="1" VerticalAlignment="Top" Text="{Binding FestivalInfo.StartDate}"/>
+        <DatePicker Margin="10,195,21,0" Grid.Row="1" VerticalAlignment="Top" Text="{Binding FestivalInfo.StartDate, StringFormat='dd MMM yyyy'}" LostFocus="festivalstartdatum_opslaan"/>
         <Label Content="Einddatum" HorizontalAlignment="Left" Margin="10,225,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100"/>
-        <DatePicker x:Name="Einddatum" Margin="10,251,21,0" Grid.Row="1" VerticalAlignment="Top" Text="{Binding FestivalInfo.EndDate}" LostFocus="festivaleinddatum_opslaan"/>
-        Button Content="Button" HorizontalAlignment="Left" Margin="15,285,0,0" Grid.Row="1" VerticalAlignment="Top" Width="95"/>
+        <DatePicker x:Name="Einddatum" Margin="10,251,21,0" Grid.Row="1" VerticalAlignment="Top" Text="{Binding FestivalInfo.EndDate, StringFormat='dd MMM yyyy'}" LostFocus="festivaleinddatum_opslaan"/>
+        <Button Content="Opslaan" HorizontalAlignment="Left" Margin="15,285,0,0" Grid.Row="1" VerticalAlignment="Top" Width="95"/>
 
 
         <!--Beroepen toevoegen-->
         <Label Content="Beroep toevoegen" Grid.Column="1" Margin="10,5,10,0" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox x:Name="AddJob" Margin="10,30,10,0" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
         <Button Content="Opslaan" Margin="10,65,10,0" Grid.Row="1" Grid.Column="1" Command="ApplicationCommands.Save" Height="18" VerticalAlignment="Top"/>
-        <
 
 
 
