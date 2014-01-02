@@ -24,6 +24,7 @@ namespace Festival.model
         public string Name { get; set; }
         public string Beschrijving { get; set; }
 
+        //Klasse om de festivalgegevens op te halen uit DB
         public static ObservableCollection<Festival> GetFestivals()
         {
             ObservableCollection<Festival> festivals = new ObservableCollection<Festival>();
