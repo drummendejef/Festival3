@@ -52,7 +52,33 @@ namespace Festival.viewmodel
             get { return _selectedtickettype; }
             set { _selectedtickettype = value; OnPropertyChanged("SelectedTicketType");}
         }
+
+        //Geselecteerd bestel ticket
+        private TicketType _selectedordertype;
+        public TicketType SelectedOrderType
+        {
+            get { return _selectedordertype; }
+            set { _selectedordertype = value; OnPropertyChanged("SelectedOrderType"); }
+        }
         
+        //Als ik het aantal te bestellen tickets via een combobox wil doen.
+        ////Aantal beschikbare tickets
+        //private int _beschikbaarticket;
+        //public int BeschikbaarTicket
+        //{
+        //    get { return _beschikbaarticket; }
+        //    set { _beschikbaarticket = value; OnPropertyChanged("BeschikbaarTicket"); }
+        //}
+
+        //private ObservableCollection<int> _beschikbaarlijst;
+        //public ObservableCollection<int> BeschikbaarLijst
+        //{
+        //    get { return _beschikbaarlijst; }
+        //    set { _beschikbaarlijst = value; OnPropertyChanged("BeschikbaarLijst"); }
+        //} 
+        
+
+
         
         
     }

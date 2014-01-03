@@ -55,5 +55,23 @@ namespace Festival.model
             result += "Aantal: " + Amount;
             return result;
         }
+
+        //Nieuw ticket toevoegen aan DB
+        public static void Add(string houder, string email, string type, int aantal)
+        {
+            int typeID = TicketType.GetTicketID(type);
+            //Aantal resterende tickets opslaan
+            TicketType.SetAmount(typeID, aantal);
+            
+            string sql = "INSERT INTO Tickets (TicketEigenaar, TicketEmail, TicketTypeID, Aantal) VALUES (@Holder, @Email, @TypeID, @Amount)";
+
+            DbParameter param1 = Database.AddParameter("@Holder", houder);
+            DbParameter param2 = Database.AddParameter("@Email", email);
+            DbParameter param3 = Database.AddParameter("@TypeID", typeID);
+            DbParameter param4 = Database.AddParameter("@Amount", aantal);
+            Database.ModifyData(sql, param1, param2, param3, param4);
+
+            Console.WriteLine("Besteld ticket toegevoegd aan database");
+        }
     }
 }

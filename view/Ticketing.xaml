@@ -32,9 +32,11 @@
         <!--Tickets Bestellen-->
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,13,0,0" TextWrapping="Wrap" Text="Bestellen" VerticalAlignment="Top" Width="92"/>
         <Label Content="Ticket" Grid.Column="1" Margin="120,35,10,0" VerticalAlignment="Top"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="102" ToolTip="Ticket" ItemsSource="{Binding TicketTypeList}" SelectedItem="{Binding SelectedOrderType}"/>
+        <ComboBox x:Name="SelectedType" Grid.Column="1" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="102" ToolTip="Ticket" ItemsSource="{Binding TicketTypeList}" SelectedItem="{Binding SelectedOrderType}"/>
         <Label Content="Aantal" Grid.Column="1" Margin="120,65,10,0" VerticalAlignment="Top"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Width="102" ToolTip="aantal"/>
+        <!--Met textbox doen totdat ik de combobox aan de praat krijg.-->
+        <TextBox x:Name="SelectedAantal" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,70,0,0" TextWrapping="Wrap" Text="Aantal" VerticalAlignment="Top" Width="100"  GotFocus="Clear_Textbox"/>
+        <!--<ComboBox x:Name="SelectedAantal" Grid.Column="1" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Width="102" ToolTip="aantal" ItemsSource="{Binding BeschikbaarLijst}"/>-->
         <Label Content="Naam" Grid.Column="1" HorizontalAlignment="Left" Margin="125,100,0,0" VerticalAlignment="Top" Width="65"/>
         <TextBox x:Name="NewName" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,100,0,0" TextWrapping="Wrap" Text="Naam" VerticalAlignment="Top" Width="102" GotFocus="Clear_Textbox"/>
         <Label Content="Voornaam" Grid.Column="1" HorizontalAlignment="Left" Margin="125,125,0,0" VerticalAlignment="Top" Width="65"/>
@@ -43,6 +45,7 @@
         <TextBox x:Name="NewEmail" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,156,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="102" GotFocus="Clear_Textbox"/>
         <Button Content="Bestel" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,188,0,0" VerticalAlignment="Top" Width="73" Command="ApplicationCommands.Save"/>
         
+
 
 
 

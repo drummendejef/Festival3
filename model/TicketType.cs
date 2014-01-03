@@ -100,5 +100,27 @@ namespace Festival.model
             result = Name;
             return result;
         }
+
+        //Aantal overblijvende tickets aanpassen
+        public static void SetAmount(int id, int gekochtaantal)
+        {
+            //*********************
+            //AANTAL RESTERENDE TICKETS AANPASSEN TODO
+            //********************
+
+            //foreach (TicketType type in GetTypes())
+            //{
+            //    if (type.ID == id)
+            //    {
+            //        DbDataReader reader = Database.GetData("SELECT Resterend FROM TicketType WHERE ID=@id");
+            //    }
+            //}
+
+            //string sql = "UPDATE TicketType SET Resterend=@resterend WHERE ID=@ID";
+                    
+                    
+                    
+
+        }
     }
 }

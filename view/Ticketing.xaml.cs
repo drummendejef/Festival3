@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Festival.model;
 
 namespace Festival.view
 {
@@ -24,6 +25,24 @@ namespace Festival.view
             InitializeComponent();
         }
 
-        
+        //Textbox leegmaken op klik
+        private void Clear_Textbox(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= Clear_Textbox;
+        }
+
+        //Nieuw ticket toevoegen 
+        private void CommandBinding_BestelTicket(object sender, ExecutedRoutedEventArgs e)
+        {
+            string houder = NewName.Text + " " + NewFirstName.Text;
+            Ticket.Add(houder, NewEmail.Text, SelectedType.Text, Convert.ToInt32(SelectedAantal.Text));
+
+            
+            
+            
+            //AvailableTickets
+        }     
     }
 }
