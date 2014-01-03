@@ -5,28 +5,40 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         mc:Ignorable="d" 
         d:DesignHeight="300" d:DesignWidth="400">
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
+
+        <!--Lijst met podia-->
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Podia" VerticalAlignment="Top" Width="69"/>
-        <ComboBox HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="84" ToolTip="Kies podium"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,217,0,0" TextWrapping="Wrap" Text="Voeg podium toe" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Voeg toe" HorizontalAlignment="Left" Margin="10,245,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Band info" VerticalAlignment="Top" Width="68"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,26,0,0" TextWrapping="Wrap" Text="Naam" VerticalAlignment="Top" Width="120"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Width="120" ToolTip="Podium"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" Width="68"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="118,119,0,0" VerticalAlignment="Top" Width="68"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,86,0,0" TextWrapping="Wrap" Text="Tijden" VerticalAlignment="Top" Width="102"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="66,86,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,-0.273"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="10,156,0,0" TextWrapping="Wrap" Text="Beschrijving" VerticalAlignment="Top" Width="176"/>
-        <Image HorizontalAlignment="Left" Height="75" Margin="10,185,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="90,201,0,0" TextWrapping="Wrap" Text="Genres" VerticalAlignment="Top" Height="44" Width="62"/>
+        <ComboBox HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="84" ToolTip="Kies podium" ItemsSource="{Binding PodiaList}"/>
+
+
+
+        <!--Band informatie-->
+
+
+        <Image HorizontalAlignment="Left" Height="75" Margin="10,205,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,90,0,0" TextWrapping="Wrap" Text="Genres" VerticalAlignment="Top" Height="20" Width="62"/>
         <Image Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="90,234,0,0" VerticalAlignment="Top" Width="22" ToolTip="Facebook"/>
-        <Image Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="130,234,0,0" VerticalAlignment="Top" Width="22" ToolTip="Twitter"/>
+        <Image Grid.Column="1" HorizontalAlignment="Left" Height="56" Margin="120,224,0,0" VerticalAlignment="Top" Width="60" ToolTip="Twitter"/>
+
+        
+        <!--Band info-->
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Band info" VerticalAlignment="Top" Width="68"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding BandList}" SelectedItem="{Binding SelectedBand}"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,67,0,0" TextWrapping="Wrap" Text="{Binding SelectedBand.Name}" VerticalAlignment="Top" Width="120"/>
+        <ListBox x:Name="GenreList" ItemsSource="{Binding GenreList}" Margin="10,110,65,120" Grid.Column="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <!--<CheckBox x:Name="genre" Content="{Binding Name}" IsChecked="{Binding isChecked}" />-->
+                    <CheckBox x:Name="genre" Content="{Binding Name}" IsChecked="{Binding isChecked}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
     </Grid>
 </UserControl>

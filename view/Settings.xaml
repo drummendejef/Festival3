@@ -8,6 +8,7 @@
     <UserControl.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Save" Executed="CommandBinding_Save" />
         <CommandBinding Command="ApplicationCommands.New" Executed="CommandBinding_GenreSave" />
+        <CommandBinding Command="ApplicationCommands.Copy" Executed="CommandBinding_PodiumSave" />
     </UserControl.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -43,6 +44,10 @@
         <Label Content="Genre toevoegen" Grid.Column="2" Margin="5,2,5,0" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox x:Name="AddGenre" Grid.Column="2" Height="23" Margin="5,30,5,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
         <Button Content="Opslaan" Grid.Column="2" Margin="5,65,5,0" Grid.Row="1" VerticalAlignment="Top" Command="ApplicationCommands.New"/>
+
+        <!--Podium toevoegen-->
+        <TextBox x:Name="AddPodiumnaam" HorizontalAlignment="Left" Height="23" Margin="10,193,10,0" TextWrapping="Wrap" Text="Voeg podium toe" VerticalAlignment="Top" Width="120" Grid.Column="2" Grid.Row="1"/>
+        <Button Content="Voeg toe" Margin="10,223,10,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2" Command="ApplicationCommands.Copy"/>
 
 
 

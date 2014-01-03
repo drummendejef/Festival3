@@ -72,7 +72,6 @@ namespace Festival.model
         }
 
         //Opslaan/Updaten van de gegevens
-        //public static void UpdateContactPersons(int id, string name, string surname, string street, string city, int zipcode, string cellphone, string phone, string email, string jobrole, string company)
         public static void UpdateContactPersons(ContactPerson p)
         {
             int jobroleid = ContactPersonType.GetContactTypeID(p.JobRole);

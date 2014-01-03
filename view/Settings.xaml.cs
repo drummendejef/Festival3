@@ -72,6 +72,16 @@ namespace Festival.view
                 Console.WriteLine("Geen Genre ingegeven");
         }
 
+        //Nieuw podium opslaan
+        private void CommandBinding_PodiumSave(object sender, ExecutedRoutedEventArgs e)
+        {
+            //Zit er wel iets in het vakje?
+            if (AddPodiumnaam.Text.Count() > 0)
+                Stage.Add(AddPodiumnaam.Text);
+            else
+                Console.WriteLine("Geen Podiumnaam ingegeven");
+        }
+
         
     }
 }

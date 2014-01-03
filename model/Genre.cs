@@ -15,6 +15,7 @@ namespace Festival.model
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        public bool isChecked { get; set; }
 
         //Genres ophalen
         public static ObservableCollection<Genre> GetGenres()
@@ -51,5 +52,7 @@ namespace Festival.model
 
             Console.WriteLine("Nieuw Genre opgeslagen");
         }
+
+
     }
 }
