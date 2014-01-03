@@ -15,7 +15,7 @@ namespace Festival.model
         public string Name { get; set; }
         public double Price { get; set; }
         public int AvailableTickets { get; set; }
-        public int MaxAmount { get; set; };
+        public int MaxAmount { get; set; }
 
         //Tickettype's ophalen
         public static ObservableCollection<TicketType> GetTypes()
@@ -40,7 +40,8 @@ namespace Festival.model
                 ID = Convert.ToInt32(record["ID"].ToString()),
                 Name = record["Naam"].ToString(),
                 Price = Convert.ToInt32(record["Prijs"].ToString()),
-                AvailableTickets = Convert.ToInt32(record["Beschikbaar"].ToString())
+                AvailableTickets = Convert.ToInt32(record["Resterend"].ToString()),
+                MaxAmount = Convert.ToInt32(record["MaxAantal"].ToString())
             };
         }
 
