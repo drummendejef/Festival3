@@ -6,7 +6,10 @@
         mc:Ignorable="d" 
         d:DesignHeight="400" d:DesignWidth="400">
 
-    <Grid ToolTip="Kies Ticket">
+    <UserControl.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Save" Executed="CommandBinding_BestelTicket" />
+    </UserControl.CommandBindings>
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -14,23 +17,39 @@
         <!--Overzicht Soorten Tickets-->
         <TextBlock HorizontalAlignment="Left" Height="19" Margin="10,10,0,0" TextWrapping="Wrap" Text="Overzicht soorten tickets" VerticalAlignment="Top" Width="56"/>
         <ComboBox HorizontalAlignment="Left" Margin="15,30,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding TicketTypeList}" SelectedValue="{Binding SelectedTicketType}"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="15,67,0,0" TextWrapping="Wrap" ToolTip="Naam"  VerticalAlignment="Top" Width="83" Text="{Binding SelectedTicketType.Price}"/>
+        <Label Content="Prijs" HorizontalAlignment="Left" Margin="105,65,0,0" VerticalAlignment="Top" Width="78"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="15,65,0,0" TextWrapping="Wrap" ToolTip="Prijs"  VerticalAlignment="Top" Width="83" Text="{Binding SelectedTicketType.Price}"/>
+        <Label Content="Max Aantal" HorizontalAlignment="Left" Margin="105,95,0,0" VerticalAlignment="Top" Width="85"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="15,95,0,0" TextWrapping="Wrap" ToolTip="Totaal aantal" VerticalAlignment="Top" Width="83" Text="{Binding SelectedTicketType.MaxAmount}" />
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="15,125,0,0" TextWrapping="Wrap" ToolTip="Prijs" VerticalAlignment="Top" Width="83"/>
+        <Label Content="Resterend: " HorizontalAlignment="Left" Margin="105,125,0,0" VerticalAlignment="Top" Width="85"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="15,125,0,0" TextWrapping="Wrap" ToolTip="Resterend" VerticalAlignment="Top" Width="83" Text="{Binding SelectedTicketType.AvailableTickets}"/>
 
         <!--Overzicht van gekochte tickets-->
+        <TextBlock TextWrapping="Wrap" Text="Overzicht tickets" Margin="10,260,130,120"/>
         <ListBox Margin="10,285,10,10" ItemsSource="{Binding TicketList}" SelectedItem="{Binding SelectedTicket}" Grid.ColumnSpan="2" />
 
 
-        <TextBlock TextWrapping="Wrap" Text="Overzicht tickets" Margin="10,260,130,120"/>
+        <!--Tickets Bestellen-->
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,13,0,0" TextWrapping="Wrap" Text="Bestellen" VerticalAlignment="Top" Width="92"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="102" ToolTip="Ticket"/>
+        <Label Content="Ticket" Grid.Column="1" Margin="120,35,10,0" VerticalAlignment="Top"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" Width="102" ToolTip="Ticket" ItemsSource="{Binding TicketTypeList}" SelectedItem="{Binding SelectedOrderType}"/>
+        <Label Content="Aantal" Grid.Column="1" Margin="120,65,10,0" VerticalAlignment="Top"/>
         <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" Width="102" ToolTip="aantal"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,100,0,0" TextWrapping="Wrap" Text="Naam" VerticalAlignment="Top" Width="102"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,128,0,0" TextWrapping="Wrap" Text="Voornaam" VerticalAlignment="Top" Width="102"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,156,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="102"/>
-        <Button Content="Bestel" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,188,0,0" VerticalAlignment="Top" Width="73"/>
+        <Label Content="Naam" Grid.Column="1" HorizontalAlignment="Left" Margin="125,100,0,0" VerticalAlignment="Top" Width="65"/>
+        <TextBox x:Name="NewName" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,100,0,0" TextWrapping="Wrap" Text="Naam" VerticalAlignment="Top" Width="102" GotFocus="Clear_Textbox"/>
+        <Label Content="Voornaam" Grid.Column="1" HorizontalAlignment="Left" Margin="125,125,0,0" VerticalAlignment="Top" Width="65"/>
+        <TextBox x:Name="NewFirstName" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" GotFocus="Clear_Textbox" Text="Voornaam"/>
+        <Label Content="Email" Grid.Column="1" HorizontalAlignment="Left" Margin="125,150,0,0" VerticalAlignment="Top" Width="60"/>
+        <TextBox x:Name="NewEmail" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,156,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="102" GotFocus="Clear_Textbox"/>
+        <Button Content="Bestel" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,188,0,0" VerticalAlignment="Top" Width="73" Command="ApplicationCommands.Save"/>
         
+
+
+
+
+
+
+
 
 
     </Grid>
