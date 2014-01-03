@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,13 +10,14 @@ using Festival.view;
 
 namespace Festival.viewmodel
 {
-    class StagesVM : ObservableObject, IPage
+    class StagesVM : ObservableObject, IPage, INotifyPropertyChanged
     {
         public StagesVM()
         {
             PodiaList = Stage.GetStages();
             GenreList = Genre.GetGenres();
             BandList = Band.GetBands();
+            GenreSelectedList = Genre.GetGenres();
         }
         
         public string Name
@@ -44,7 +46,11 @@ namespace Festival.viewmodel
         public Band SelectedBand
         {
             get { return _selectedband; }
-            set { _selectedband = value; OnPropertyChanged("SelectedBand"); }
+            set 
+            { 
+                _selectedband = value;
+                GenreSelectedList = (value == null) ? Genre.GetGenres() : value.Genres;
+                OnPropertyChanged("SelectedBand"); }
         }
         
 
@@ -55,6 +61,15 @@ namespace Festival.viewmodel
             get { return _genrelist; }
             set { _genrelist = value; OnPropertyChanged("GenreList"); }
         }
+
+        //Genres van geselecteerde band
+        private ObservableCollection<Genre> _genreselectedlist;
+        public ObservableCollection<Genre> GenreSelectedList
+        {
+            get { return _genreselectedlist; }
+            set { _genreselectedlist = value; }
+        }
+        
 
 
         

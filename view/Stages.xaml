@@ -31,10 +31,9 @@
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Band info" VerticalAlignment="Top" Width="68"/>
         <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding BandList}" SelectedItem="{Binding SelectedBand}"/>
         <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,67,0,0" TextWrapping="Wrap" Text="{Binding SelectedBand.Name}" VerticalAlignment="Top" Width="120"/>
-        <ListBox x:Name="GenreList" ItemsSource="{Binding GenreList}" Margin="10,110,65,120" Grid.Column="1">
+        <ListBox x:Name="GenreList" ItemsSource="{Binding GenreSelectedList}" Margin="10,110,65,120" Grid.Column="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <!--<CheckBox x:Name="genre" Content="{Binding Name}" IsChecked="{Binding isChecked}" />-->
                     <CheckBox x:Name="genre" Content="{Binding Name}" IsChecked="{Binding isChecked}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
