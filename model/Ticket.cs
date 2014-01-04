@@ -85,7 +85,7 @@ namespace Festival.model
             {
                 if (ssc.ID == t.ID)
                 {
-                    string filename = "../../../Afgedrukte Tickets/" + ssc.Ticketholder + "_" + ssc.TicketType + ".docx";
+                    string filename = "../../Afgedrukte Tickets/" + ssc.Ticketholder + "_" + ssc.TicketType + ".docx";
                     File.Copy("template.docx", filename, true);
 
                     WordprocessingDocument newdoc = WordprocessingDocument.Open(filename, true);
@@ -101,6 +101,8 @@ namespace Festival.model
                     bookmarks["Amount"].Parent.InsertAfter<Run>(new Run(new Text(ssc.Amount.ToString())),
                     bookmarks["Amount"]);
                     newdoc.Close();
+
+                    Console.WriteLine("Ticket Afgedrukt");
                 }
             }
         }
