@@ -4,7 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         mc:Ignorable="d" 
-        d:DesignHeight="400" d:DesignWidth="400">
+        d:DesignHeight="450" d:DesignWidth="400">
 
     <UserControl.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Save" Executed="CommandBinding_BestelTicket" />
@@ -26,7 +26,7 @@
 
         <!--Overzicht van gekochte tickets-->
         <TextBlock TextWrapping="Wrap" Text="Overzicht tickets" Margin="10,260,130,120"/>
-        <ListBox Margin="10,285,10,10" ItemsSource="{Binding TicketList}" SelectedItem="{Binding SelectedTicket}" Grid.ColumnSpan="2" />
+        <ListBox Margin="10,285,10,35" ItemsSource="{Binding TicketList}" SelectedItem="{Binding SelectedTicket}" Grid.ColumnSpan="2" />
 
 
         <!--Tickets Bestellen-->
@@ -44,7 +44,8 @@
         <Label Content="Email" Grid.Column="1" HorizontalAlignment="Left" Margin="125,150,0,0" VerticalAlignment="Top" Width="60"/>
         <TextBox x:Name="NewEmail" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,156,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="102" GotFocus="Clear_Textbox"/>
         <Button Content="Bestel" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,188,0,0" VerticalAlignment="Top" Width="73" Command="ApplicationCommands.Save"/>
-        
+        <Button Content="Afdrukken" HorizontalAlignment="Left" Margin="15,420,0,0" VerticalAlignment="Top" Width="90" Height="20"/>
+
 
 
 

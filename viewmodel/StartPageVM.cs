@@ -28,7 +28,7 @@ namespace Festival.viewmodel
         public Festival.model.Festival FestivalInfo
         {
             get { return _festivalinfo; }
-            set { _festivalinfo = value; OnPropertyChanged("FestivalInfo"); }
+            set { _festivalinfo = value; OnPropertyChanged("FestivalInfo"); } 
         }   
     }
 }

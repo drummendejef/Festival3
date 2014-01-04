@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.Common;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace Festival.model
 {
@@ -72,6 +76,33 @@ namespace Festival.model
             Database.ModifyData(sql, param1, param2, param3, param4);
 
             Console.WriteLine("Besteld ticket toegevoegd aan database");
+        }
+
+        //Tickets afdrukken naar WORD
+        public static void Print(int id)
+        {
+            foreach (Ticket ssc in GetTickets())
+            {
+                if (ssc.ID == id)
+                {
+                    string filename = ssc.Ticketholder + "_" + ssc.TicketType + ".docx";
+                    File.Copy("template.docx", filename, true);
+
+                    WordprocessingDocument newdoc = WordprocessingDocument.Open(filename, true);
+                    IDictionary<String, BookmarkStart> bookmarks = new Dictionary<String, BookmarkStart>();
+                    foreach (BookmarkStart bms in newdoc.MainDocumentPart.RootElement.Descendants<BookmarkStart>())
+                    {
+                        bookmarks[bms.Name] = bms;
+                    }
+                    bookmarks["Name"].Parent.InsertAfter<Run>(new Run(new Text(ssc.Ticketholder)), bookmarks["Name"]);
+                    bookmarks["Firstname"].Parent.InsertAfter<Run>(new Run(new Text(ssc.Firstname)),
+                    bookmarks["Firstname"]);
+                    bookmarks["Group"].Parent.InsertAfter<Run>(new Run(new Text(ssc.Group)), bookmarks["Group"]);
+                    bookmarks["Score"].Parent.InsertAfter<Run>(new Run(new Text(ssc.Score.ToString())),
+                    bookmarks["Score"]);
+                    newdoc.Close();
+                }
+            }
         }
     }
 }

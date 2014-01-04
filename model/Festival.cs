@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -18,7 +19,7 @@ namespace Festival.model
         public DateTime EndDate
         {
             get { return _enddate; }
-            set { _enddate = value; OnPropertyChanged("EndDate"); }
+            set { _enddate = value; NotifyPropertyChanged(); }//OnPropertyChanged("EndDate"); }
         }
         
         public string Name { get; set; }
@@ -94,7 +95,8 @@ namespace Festival.model
         // PROPERTY CHANGED EVENTHANDLER
         /* ----------------------------------------------------------------- */
         public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName)
+        
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             if (PropertyChanged != null)
             {
