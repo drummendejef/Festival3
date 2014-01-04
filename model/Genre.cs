@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
@@ -11,10 +12,12 @@ using System.Xml;
 
 namespace Festival.model
 {
-    class Genre
+    class Genre : IDataErrorInfo
     {
         public int ID { get; set; }
         public string Name { get; set; }
+        [Required(ErrorMessage = "The Genrenaam is required")]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "The length must be between 2 and 50 characters")]
         public bool isChecked { get; set; }
 
         //Genres ophalen
@@ -51,6 +54,32 @@ namespace Festival.model
             Database.ModifyData(sql, param1);
 
             Console.WriteLine("Nieuw Genre opgeslagen");
+        }
+
+        //******************************
+        //UNDER CONSTRUCTION DATAVALIDATION
+        //******************************
+        //IDataErrorinfo interface geimplementeerd.
+        public string Error
+        {
+            get { return null; }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                try
+                {
+                    object value = this.GetType().GetProperty(columnName).GetValue(this);
+                    Validator.ValidateProperty(value, new ValidationContext(this, null, null) { MemberName = columnName });
+                }
+                catch (ValidationException ex)
+                {
+                    return ex.Message;
+                }
+                return String.Empty;
+            }
         }
 
 

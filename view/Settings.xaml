@@ -5,11 +5,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="400">
+    
     <UserControl.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Save" Executed="CommandBinding_Save" />
         <CommandBinding Command="ApplicationCommands.New" Executed="CommandBinding_GenreSave" />
         <CommandBinding Command="ApplicationCommands.Copy" Executed="CommandBinding_PodiumSave" />
     </UserControl.CommandBindings>
+    <UserControl.Resources>
+        <ControlTemplate x:Key="ErrorTemplate">
+            <StackPanel>
+                <Border BorderBrush="Red" BorderThickness="2">
+                    <AdornedElementPlaceholder/>
+                </Border>
+                <TextBlock Foreground="Red" Text="{Binding [0].ErrorContent}"/>
+            </StackPanel>
+        </ControlTemplate>
+        <Style x:Key="TextboxError" TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="Foreground" Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -26,7 +44,8 @@
 
         <!--Festivalnaam-->
         <Label Content="Festivalnaam" Margin="10,5,10,243" Grid.Row="1"/>
-        <TextBox x:Name="FestivalNaam" Height="23" Margin="10,30,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding FestivalInfo.Name}" VerticalAlignment="Top" LostFocus="festivalnaam_opslaan"/>
+        <TextBox x:Name="FestivalNaam" Height="23" Margin="10,30,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding FestivalInfo.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" LostFocus="festivalnaam_opslaan" Validation.ErrorTemplate="{StaticResource ErrorTemplate }" 
+                 Style="{StaticResource TextboxError}"/>
         <Label Content="Omschrijving" Margin="10,54,10,0" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox x:Name="FestivalBeschrijving" Height="85" Margin="10,80,8,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding FestivalInfo.Beschrijving}" VerticalAlignment="Top" Cursor="None" LostFocus="festivalbeschrijving_opslaan"/>
         <Label Content="Startdatum" Margin="10,170,8,0" Grid.Row="1" VerticalAlignment="Top"/>
@@ -37,7 +56,6 @@
 
         <!--Beroepen toevoegen-->
         <Label Content="Beroep toevoegen" Grid.Column="1" Margin="10,5,10,0" Grid.Row="1" VerticalAlignment="Top"/>
-
         <TextBox x:Name="AddJob" Margin="10,75,10,0" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" Text="Geef nieuw beroep in" GotFocus="Clear_Textbox"/>
         <Button Content="Opslaan" Margin="10,110,10,0" Grid.Row="1" Grid.Column="1" Command="ApplicationCommands.Save" Height="18" VerticalAlignment="Top"/>
         
@@ -46,7 +64,7 @@
 
         <!--Genre toevoegen-->
         <Label Content="Genre toevoegen" Grid.Column="2" Margin="5,2,5,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="AddGenre" Grid.Column="2" Height="23" Margin="5,30,5,0" Grid.Row="1" TextWrapping="Wrap" Text="Geef nieuw genre in" VerticalAlignment="Top" GotFocus="Clear_Textbox"/>
+        <TextBox x:Name="AddGenre" Grid.Column="2" Height="23" Margin="5,30,5,0" Grid.Row="1" TextWrapping="Wrap" Text="Geef nieuw genre in" VerticalAlignment="Top" GotFocus="Clear_Textbox" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
         <Button Content="Opslaan" Grid.Column="2" Margin="5,65,5,0" Grid.Row="1" VerticalAlignment="Top" Command="ApplicationCommands.New"/>
 
         <!--Podium toevoegen-->

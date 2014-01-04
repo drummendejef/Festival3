@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
@@ -12,7 +13,7 @@ using System.Xml;
 
 namespace Festival.model
 {
-    class Festival : INotifyPropertyChanged
+    class Festival : INotifyPropertyChanged, IDataErrorInfo
     {
         public DateTime StartDate { get; set; }
         private DateTime _enddate;
@@ -22,7 +23,15 @@ namespace Festival.model
             set { _enddate = value; NotifyPropertyChanged(); }//OnPropertyChanged("EndDate"); }
         }
         
-        public string Name { get; set; }
+        private string _name;
+        [Required(ErrorMessage = "De naam is verplicht")]
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+
+        [Required(ErrorMessage = "De Beschrijving is verplicht")]
         public string Beschrijving { get; set; }
 
         //Klasse om de festivalgegevens op te halen uit DB
@@ -103,6 +112,30 @@ namespace Festival.model
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+       //IDataErrorinfo interface geimplementeerd.
+        public string Error
+        {
+            get { return null; }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                try
+                {
+                    object value = this.GetType().GetProperty(columnName).GetValue(this);
+                    Validator.ValidateProperty(value, new ValidationContext(this, null, null) { MemberName = columnName });
+                }
+                catch (ValidationException ex)
+                {
+                    return ex.Message;
+                }
+                return String.Empty;
+            }
+        }
+        //Einde data validation
         
     }
 }
