@@ -25,6 +25,7 @@ namespace Festival.view
             InitializeComponent();
         }
 
+        //Als er op de "opslaan" button geklikt wordt, komt men hier in.
         private void CommandBinding_ExecutedSave(object sender, ExecutedRoutedEventArgs e)
         {
             //Is het een bestaand contactpersoon die aangepast wordt?
@@ -37,6 +38,13 @@ namespace Festival.view
             {
                 ContactPerson.Add(name.Text, surname.Text, street.Text, city.Text, Convert.ToInt32(zipcode.Text), cellphone.Text, phone.Text, email.Text, jobrole.Text, company.Text);
             }
+        }
+
+        //Als er op de delete button geklikt wordt, komt men hier in.
+        private void CommandBinding_DeleteContactPerson(object sender, ExecutedRoutedEventArgs e)
+        {
+            ContactPerson b = (ContactPerson)Contactpersonen.SelectedItem;
+            ContactPerson.delete(b);
         }
     }
 }

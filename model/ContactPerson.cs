@@ -119,5 +119,26 @@ namespace Festival.model
 
             Console.WriteLine("Opgeslagen");
         }
+
+        //Contactpersoon verwijderen
+        public static void delete(ContactPerson b)
+        {
+            int id = b.ID;
+
+            //Probeer
+            try
+            {
+                string sql = "DELETE FROM Werknemers WHERE ID=@ID";
+                DbParameter param1 = Database.AddParameter("@ID", id);
+                Database.ModifyData(sql, param1);
+
+                Console.WriteLine("Contactpersoon verwijderd");
+            }
+            //mislukt
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }

@@ -8,6 +8,7 @@
 
     <UserControl.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Save" Executed="CommandBinding_ExecutedSave" />
+        <CommandBinding Command="ApplicationCommands.Delete" Executed="CommandBinding_DeleteContactPerson" />
     </UserControl.CommandBindings>
     <Grid Name="ContactpersonenGrid">
         <Grid.ColumnDefinitions>
@@ -31,12 +32,14 @@
         <Label Content="Email" HorizontalAlignment="Left" Margin="135,275,0,0" VerticalAlignment="Top" Width="57"/>
         <TextBox x:Name="email" HorizontalAlignment="Left" Height="23" Margin="10,278,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Email}" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="jobrole" HorizontalAlignment="Left" Margin="10,324,0,0" VerticalAlignment="Top" Width="120" ToolTip="Job" ItemsSource="{Binding Joblist}" SelectedValue="{Binding SelectedContact.JobRole}" SelectedValuePath="Name"/>
-        <Button Content="Opslaan" HorizontalAlignment="Left" Margin="10,361,0,0" VerticalAlignment="Top" Width="120" Command="ApplicationCommands.Save" Height="29"/>
+        <Button Content="Opslaan" HorizontalAlignment="Left" Margin="10,360,0,0" VerticalAlignment="Top" Width="120" Command="ApplicationCommands.Save" Height="29"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="140,360,0,0" VerticalAlignment="Top" Width="55" Height="29" Command="ApplicationCommands.Delete"/>
 
         <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="66,7,0,0" TextWrapping="Wrap" Text="Zoek op naam" VerticalAlignment="Top" Width="120"/>
         <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="66,35,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding SelectedJob}"/>
         <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="172" Margin="10,88,0,0" VerticalAlignment="Top" Width="176"/>
         <ListBox x:Name="Contactpersonen" Grid.Column="1" Margin="10,68,10,10" ItemsSource="{Binding ContactsList}" SelectedItem="{Binding SelectedContact}" />
+
 
 
     </Grid>
