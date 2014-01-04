@@ -5,6 +5,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         mc:Ignorable="d" 
         d:DesignHeight="300" d:DesignWidth="400">
+    <UserControl.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Save" Executed="CommandBinding_PodiumOpslaan_Bewerken"/>
+    </UserControl.CommandBindings>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -14,7 +17,10 @@
 
         <!--Lijst met podia-->
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Podia" VerticalAlignment="Top" Width="69"/>
-        <ComboBox HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="84" ToolTip="Kies podium" ItemsSource="{Binding PodiaList}"/>
+        <ComboBox x:Name="GeselecteerdPodium" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="100" ToolTip="Kies podium" ItemsSource="{Binding PodiaList}" SelectedItem="{Binding SelectedPodium}"/>     
+        <!--Podium aanpassen-->
+        <TextBox x:Name="Podiumnaam" HorizontalAlignment="Left" Height="23" Margin="10,67,0,0" TextWrapping="Wrap" Text="{Binding SelectedPodium.Name}" VerticalAlignment="Top" Width="100"/>
+        <Button Content="Opslaan" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="100" Height="20" Command="ApplicationCommands.Save"/>
 
 
 
@@ -38,6 +44,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+
 
     </Grid>
 </UserControl>

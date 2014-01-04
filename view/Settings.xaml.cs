@@ -82,6 +82,14 @@ namespace Festival.view
                 Console.WriteLine("Geen Podiumnaam ingegeven");
         }
 
+        //Textbox leegmaken op focus
+        private void Clear_Textbox(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= Clear_Textbox;
+        }
+
         
     }
 }

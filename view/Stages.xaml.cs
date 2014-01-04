@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Festival.model;
 
 namespace Festival.view
 {
@@ -22,6 +23,17 @@ namespace Festival.view
         public Stages()
         {
             InitializeComponent();
+        }
+
+        //Nieuw podium opslaan, podium aanpassen
+        private void CommandBinding_PodiumOpslaan_Bewerken(object sender, ExecutedRoutedEventArgs e)
+        {
+            //Is er een podium geselecteerd? Dan is het bewerken.
+            if(GeselecteerdPodium.Text.Count() > 0)
+            {
+                Stage.Update(Podiumnaam.Text, GeselecteerdPodium.Text);
+            }
+
         }
     }
 }

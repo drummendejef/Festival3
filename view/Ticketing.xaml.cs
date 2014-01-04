@@ -25,7 +25,7 @@ namespace Festival.view
             InitializeComponent();
         }
 
-        //Textbox leegmaken op klik
+        //Textbox leegmaken op focus
         private void Clear_Textbox(object sender, RoutedEventArgs e)
         {
             TextBox tb = (TextBox)sender;

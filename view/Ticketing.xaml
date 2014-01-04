@@ -18,11 +18,11 @@
         <TextBlock HorizontalAlignment="Left" Height="19" Margin="10,10,0,0" TextWrapping="Wrap" Text="Overzicht soorten tickets" VerticalAlignment="Top" Width="56"/>
         <ComboBox HorizontalAlignment="Left" Margin="15,30,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding TicketTypeList}" SelectedValue="{Binding SelectedTicketType}"/>
         <Label Content="Prijs" HorizontalAlignment="Left" Margin="105,65,0,0" VerticalAlignment="Top" Width="78"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="15,65,0,0" TextWrapping="Wrap" ToolTip="Prijs"  VerticalAlignment="Top" Width="83" Text="{Binding SelectedTicketType.Price}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="15,65,0,0" TextWrapping="Wrap" ToolTip="Prijs"  VerticalAlignment="Top" Width="83" Text="{Binding SelectedTicketType.Price}" GotFocus="Clear_Textbox"/>
         <Label Content="Max Aantal" HorizontalAlignment="Left" Margin="105,95,0,0" VerticalAlignment="Top" Width="85"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="15,95,0,0" TextWrapping="Wrap" ToolTip="Totaal aantal" VerticalAlignment="Top" Width="83" Text="{Binding SelectedTicketType.MaxAmount}" />
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="15,95,0,0" TextWrapping="Wrap" ToolTip="Totaal aantal" VerticalAlignment="Top" Width="83" Text="{Binding SelectedTicketType.MaxAmount}" GotFocus="Clear_Textbox"/>
         <Label Content="Resterend: " HorizontalAlignment="Left" Margin="105,125,0,0" VerticalAlignment="Top" Width="85"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="15,125,0,0" TextWrapping="Wrap" ToolTip="Resterend" VerticalAlignment="Top" Width="83" Text="{Binding SelectedTicketType.AvailableTickets}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="15,125,0,0" TextWrapping="Wrap" ToolTip="Resterend" VerticalAlignment="Top" Width="83" Text="{Binding SelectedTicketType.AvailableTickets}" GotFocus="Clear_Textbox"/>
 
         <!--Overzicht van gekochte tickets-->
         <TextBlock TextWrapping="Wrap" Text="Overzicht tickets" Margin="10,260,130,120"/>

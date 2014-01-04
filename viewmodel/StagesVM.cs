@@ -33,6 +33,15 @@ namespace Festival.viewmodel
             set { _podialist = value; OnPropertyChanged("PodiaList"); }
         }
 
+        //Geselecteerd podium
+        private Stage _selectedpodium;
+        public Stage SelectedPodium
+        {
+            get { return _selectedpodium; }
+            set { _selectedpodium = value; OnPropertyChanged("SelectedPodium"); }
+        }
+        
+
         //Lijst met alle bands
         private ObservableCollection<Band> _bandlist;
         public ObservableCollection<Band> BandList
@@ -69,11 +78,6 @@ namespace Festival.viewmodel
             get { return _genreselectedlist; }
             set { _genreselectedlist = value; }
         }
-        
-
-
-        
-        
-        
+      
     }
 }

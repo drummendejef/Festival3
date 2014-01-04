@@ -57,5 +57,24 @@ namespace Festival.model
             result += Name;
             return result;
         }
+
+        //Updaten van naam
+        public static void Update(string nieuwenaam, string oudenaam)
+        {
+            foreach (Stage stage in GetStages())
+            {
+                if (stage.Name == oudenaam)
+                {
+                    string sql = "UPDATE Podia SET Naam=@Nieuw WHERE Naam=@Oud";
+                    DbParameter param1 = Database.AddParameter("@Nieuw", nieuwenaam);
+                    DbParameter param2 = Database.AddParameter("@Oud", oudenaam);
+                    Database.ModifyData(sql, param1, param2);
+
+                    stage.Name = nieuwenaam;
+
+                    Console.WriteLine("Podiumnaam geupdate");
+                }
+            }
+        }
     }
 }

@@ -37,17 +37,22 @@
 
         <!--Beroepen toevoegen-->
         <Label Content="Beroep toevoegen" Grid.Column="1" Margin="10,5,10,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="AddJob" Margin="10,30,10,0" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Height="23" VerticalAlignment="Top"/>
-        <Button Content="Opslaan" Margin="10,65,10,0" Grid.Row="1" Grid.Column="1" Command="ApplicationCommands.Save" Height="18" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="AddJob" Margin="10,75,10,0" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" Text="Geef nieuw beroep in" GotFocus="Clear_Textbox"/>
+        <Button Content="Opslaan" Margin="10,110,10,0" Grid.Row="1" Grid.Column="1" Command="ApplicationCommands.Save" Height="18" VerticalAlignment="Top"/>
+        
+        <!--Beroep aanpassen-->
+        <ComboBox Grid.Column="1" Margin="10,28,10,0" Grid.Row="1" VerticalAlignment="Top"/>
 
         <!--Genre toevoegen-->
         <Label Content="Genre toevoegen" Grid.Column="2" Margin="5,2,5,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <TextBox x:Name="AddGenre" Grid.Column="2" Height="23" Margin="5,30,5,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <TextBox x:Name="AddGenre" Grid.Column="2" Height="23" Margin="5,30,5,0" Grid.Row="1" TextWrapping="Wrap" Text="Geef nieuw genre in" VerticalAlignment="Top" GotFocus="Clear_Textbox"/>
         <Button Content="Opslaan" Grid.Column="2" Margin="5,65,5,0" Grid.Row="1" VerticalAlignment="Top" Command="ApplicationCommands.New"/>
 
         <!--Podium toevoegen-->
-        <TextBox x:Name="AddPodiumnaam" HorizontalAlignment="Left" Height="23" Margin="10,193,10,0" TextWrapping="Wrap" Text="Voeg podium toe" VerticalAlignment="Top" Width="120" Grid.Column="2" Grid.Row="1"/>
-        <Button Content="Voeg toe" Margin="10,223,10,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2" Command="ApplicationCommands.Copy"/>
+        <TextBox x:Name="AddPodiumnaam" HorizontalAlignment="Left" Height="23" Margin="10,193,10,0" TextWrapping="Wrap" Text="Voeg podium toe" VerticalAlignment="Top" Width="120" Grid.Column="2" Grid.Row="1" GotFocus="Clear_Textbox"/>
+        <Button Content="Voeg toe" Margin="5,223,5,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2" Command="ApplicationCommands.Copy"/>
+
 
 
 
