@@ -39,10 +39,13 @@ namespace Festival.view
             string houder = NewName.Text + " " + NewFirstName.Text;
             Ticket.Add(houder, NewEmail.Text, SelectedType.Text, Convert.ToInt32(SelectedAantal.Text));
 
-            
-            
-            
             //AvailableTickets
         }     
+
+        //Ticket afdrukken naar word bestand
+        private void CommandBinding_PrintTicket(object sender, ExecutedRoutedEventArgs e)
+        {
+            Ticket.Print((Ticket)Print.SelectedItem);
+        }
     }
 }

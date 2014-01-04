@@ -8,6 +8,7 @@
 
     <UserControl.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Save" Executed="CommandBinding_BestelTicket" />
+        <CommandBinding Command="ApplicationCommands.Print" Executed="CommandBinding_PrintTicket" />
     </UserControl.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -26,7 +27,7 @@
 
         <!--Overzicht van gekochte tickets-->
         <TextBlock TextWrapping="Wrap" Text="Overzicht tickets" Margin="10,260,130,120"/>
-        <ListBox Margin="10,285,10,35" ItemsSource="{Binding TicketList}" SelectedItem="{Binding SelectedTicket}" Grid.ColumnSpan="2" />
+        <ListBox x:Name="Print" Margin="10,285,10,35" ItemsSource="{Binding TicketList}" SelectedItem="{Binding SelectedTicket}" Grid.ColumnSpan="2" />
 
 
         <!--Tickets Bestellen-->
@@ -44,7 +45,7 @@
         <Label Content="Email" Grid.Column="1" HorizontalAlignment="Left" Margin="125,150,0,0" VerticalAlignment="Top" Width="60"/>
         <TextBox x:Name="NewEmail" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,156,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="102" GotFocus="Clear_Textbox"/>
         <Button Content="Bestel" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,188,0,0" VerticalAlignment="Top" Width="73" Command="ApplicationCommands.Save"/>
-        <Button Content="Afdrukken" HorizontalAlignment="Left" Margin="15,420,0,0" VerticalAlignment="Top" Width="90" Height="20"/>
+        <Button Content="Afdrukken" HorizontalAlignment="Left" Margin="10,420,0,0" VerticalAlignment="Top" Width="100" Height="25" Command="ApplicationCommands.Print"/>
 
 
 

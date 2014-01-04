@@ -79,13 +79,13 @@ namespace Festival.model
         }
 
         //Tickets afdrukken naar WORD
-        public static void Print(int id)
+        public static void Print(Ticket t)
         {
             foreach (Ticket ssc in GetTickets())
             {
-                if (ssc.ID == id)
+                if (ssc.ID == t.ID)
                 {
-                    string filename = ssc.Ticketholder + "_" + ssc.TicketType + ".docx";
+                    string filename = "../../../Afgedrukte Tickets/" + ssc.Ticketholder + "_" + ssc.TicketType + ".docx";
                     File.Copy("template.docx", filename, true);
 
                     WordprocessingDocument newdoc = WordprocessingDocument.Open(filename, true);
@@ -95,11 +95,11 @@ namespace Festival.model
                         bookmarks[bms.Name] = bms;
                     }
                     bookmarks["Name"].Parent.InsertAfter<Run>(new Run(new Text(ssc.Ticketholder)), bookmarks["Name"]);
-                    bookmarks["Firstname"].Parent.InsertAfter<Run>(new Run(new Text(ssc.Firstname)),
-                    bookmarks["Firstname"]);
-                    bookmarks["Group"].Parent.InsertAfter<Run>(new Run(new Text(ssc.Group)), bookmarks["Group"]);
-                    bookmarks["Score"].Parent.InsertAfter<Run>(new Run(new Text(ssc.Score.ToString())),
-                    bookmarks["Score"]);
+                    bookmarks["Email"].Parent.InsertAfter<Run>(new Run(new Text(ssc.TicketholderEmail)),
+                    bookmarks["Email"]);
+                    bookmarks["TicketType"].Parent.InsertAfter<Run>(new Run(new Text(ssc.TicketType.Name)), bookmarks["TicketType"]);
+                    bookmarks["Amount"].Parent.InsertAfter<Run>(new Run(new Text(ssc.Amount.ToString())),
+                    bookmarks["Amount"]);
                     newdoc.Close();
                 }
             }
