@@ -300,7 +300,7 @@
     </Style>
 
     <!--Textbox-->
-    <Style TargetType="{x:Type TextBox}">
+    <Style TargetType="{x:Type TextBox}" x:Name="TextboxStyle">
         <Setter Property="FontSize" Value="10"/>
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -308,10 +308,31 @@
         <Setter Property="Template" Value="{DynamicResource TextBoxTemplate}" />
         <Setter Property="BorderBrush" Value="{DynamicResource NormalBorderBrush}"/>
         <Setter Property="Background" Value="{DynamicResource ShadeBrush}"/>
+        <Setter Property="Validation.ErrorTemplate" Value="{DynamicResource ErrorTemplate}" /><!--{DynamicResource ErrorTemplate}"/>-->
     </Style>
     
+    <!--VALIDATIE ERROR-->
+    <!--<Style x:Key="TextboxError" TargetType="{x:Type TextBox}">
+
+    <Style.Triggers>
+        <Trigger Property="Validation.HasError" Value="true">
+            <Setter Property="Foreground" Value="Red" />
+        </Trigger>
+    </Style.Triggers>
+    </Style>-->
+
+    <!--Bij Error-->
+    <ControlTemplate x:Key="ErrorTemplate" TargetType="{x:Type TextBox}">
+        <StackPanel>
+            <Border BorderBrush="Red" BorderThickness="2">
+                <AdornedElementPlaceholder/>
+            </Border>
+            <TextBlock Foreground="Red" Text="{Binding [0].ErrorContent}"/>
+        </StackPanel>
+    </ControlTemplate>
+    
     <!--Textboxtemplate-->
-    <ControlTemplate x:Key="TextBoxTemplate" TargetType="{x:Type TextBox}">
+    <ControlTemplate x:Key="TextBoxTemplate" TargetType="{x:Type TextBox}" >
         <ControlTemplate.Resources>
             <Storyboard x:Key="HoverOn">
                 <DoubleAnimationUsingKeyFrames BeginTime="00:00:00"
@@ -364,6 +385,10 @@
                 <Trigger.EnterActions>
                     <BeginStoryboard Storyboard="{StaticResource FocusedOn}" x:Name="FocusedOn_BeginStoryboard"/>
                 </Trigger.EnterActions>
+            </Trigger>
+            <!--Validatie trigger-->
+            <Trigger Property="Validation.HasError" Value="True">
+                <Setter Property="Foreground" Value="Red" />
             </Trigger>
             <MultiTrigger>
                 <MultiTrigger.ExitActions>

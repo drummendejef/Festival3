@@ -6,10 +6,31 @@
         mc:Ignorable="d" 
         d:DesignHeight="400" d:DesignWidth="400">
 
+
     <UserControl.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Save" Executed="CommandBinding_ExecutedSave" />
         <CommandBinding Command="ApplicationCommands.Delete" Executed="CommandBinding_DeleteContactPerson" />
     </UserControl.CommandBindings>
+    <!--Template ect ivm data validatie-->
+    <UserControl.Resources>
+        <ControlTemplate x:Key="ErrorTemplate">
+            <StackPanel>
+                <Border BorderBrush="Red" BorderThickness="2">
+                    <AdornedElementPlaceholder/>
+                </Border>
+                <TextBlock Foreground="Red" Text="{Binding [0].ErrorContent}"/>
+            </StackPanel>
+        </ControlTemplate>
+        <Style x:Key="TextboxError" TargetType="{x:Type TextBox}">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="Foreground" Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+
     <Grid Name="ContactpersonenGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -17,20 +38,20 @@
         </Grid.ColumnDefinitions>
         <TextBlock HorizontalAlignment="Left" Margin="135,14,0,0" TextWrapping="Wrap" Text="Voornaam" VerticalAlignment="Top" Width="96" Grid.ColumnSpan="2"/>
         <Label Content="Naam:" Margin="135,38,21,338"/>
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Name}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="surname" HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Surname}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/> <!---->
+        <TextBox x:Name="surname" HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Surname, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
         <Label Content="Adres:" Margin="135,88,22,289"/>
-        <TextBox x:Name="street" HorizontalAlignment="Left" Height="23" Margin="10,88,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Street}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="city" HorizontalAlignment="Left" Height="23" Margin="10,116,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.City}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="street" HorizontalAlignment="Left" Height="23" Margin="10,88,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Street, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
+        <TextBox x:Name="city" HorizontalAlignment="Left" Height="23" Margin="10,116,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.City, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="zipcode" HorizontalAlignment="Left" Height="23" Margin="135,116,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Zipcode}" VerticalAlignment="Top" Width="51"/>
         <Label Content="Bedrijf:" Margin="135,157,18,205"/>
-        <TextBox x:Name="company" HorizontalAlignment="Left" Height="23" Margin="10,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" ToolTip="Bedrijf" Text="{Binding SelectedContact.Company}"/>
+        <TextBox x:Name="company" HorizontalAlignment="Left" Height="23" Margin="10,157,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" ToolTip="Bedrijf" Text="{Binding SelectedContact.Company, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
         <Label Content="GSM:" Margin="135,200,18,177"/>
-        <TextBox x:Name="cellphone" HorizontalAlignment="Left" Height="23" Margin="10,200,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Cellphone}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="cellphone" HorizontalAlignment="Left" Height="23" Margin="10,200,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Cellphone, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120"/>
         <Label Content="Telefoon:" Margin="135,237,3,140"/>
-        <TextBox x:Name="phone" HorizontalAlignment="Left" Height="23" Margin="10,237,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Phone}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="phone" HorizontalAlignment="Left" Height="23" Margin="10,237,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Phone, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120"/>
         <Label Content="Email" HorizontalAlignment="Left" Margin="135,275,0,0" VerticalAlignment="Top" Width="57"/>
-        <TextBox x:Name="email" HorizontalAlignment="Left" Height="23" Margin="10,278,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Email}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="email" HorizontalAlignment="Left" Height="23" Margin="10,278,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Email, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="jobrole" HorizontalAlignment="Left" Margin="10,324,0,0" VerticalAlignment="Top" Width="120" ToolTip="Job" ItemsSource="{Binding Joblist}" SelectedValue="{Binding SelectedContact.JobRole}" SelectedValuePath="Name"/>
         <Button Content="Opslaan" HorizontalAlignment="Left" Margin="10,360,0,0" VerticalAlignment="Top" Width="120" Command="ApplicationCommands.Save" Height="29"/>
         <Button Content="Delete" HorizontalAlignment="Left" Margin="140,360,0,0" VerticalAlignment="Top" Width="55" Height="29" Command="ApplicationCommands.Delete"/>
@@ -39,8 +60,5 @@
         <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="66,35,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding SelectedJob}"/>
         <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="172" Margin="10,88,0,0" VerticalAlignment="Top" Width="176"/>
         <ListBox x:Name="Contactpersonen" Grid.Column="1" Margin="10,68,10,10" ItemsSource="{Binding ContactsList}" SelectedItem="{Binding SelectedContact}" />
-
-
-
     </Grid>
 </UserControl>
