@@ -4,13 +4,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         mc:Ignorable="d" 
-        d:DesignHeight="400" d:DesignWidth="400">
+        d:DesignHeight="450" d:DesignWidth="400">
 
-
+    <!--ButtonCommands-->
     <UserControl.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Save" Executed="CommandBinding_ExecutedSave" />
         <CommandBinding Command="ApplicationCommands.Delete" Executed="CommandBinding_DeleteContactPerson" />
+        <CommandBinding Command="ApplicationCommands.New" Executed="CommandBinding_NewContactPerson" />
     </UserControl.CommandBindings>
+    
     <!--Template ect ivm data validatie-->
     <UserControl.Resources>
         <ControlTemplate x:Key="ErrorTemplate">
@@ -36,6 +38,8 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        
+        <!--Gegevens van Contactpersonen-->
         <TextBlock HorizontalAlignment="Left" Margin="135,14,0,0" TextWrapping="Wrap" Text="Voornaam" VerticalAlignment="Top" Width="96" Grid.ColumnSpan="2"/>
         <Label Content="Naam:" Margin="135,38,21,338"/>
         <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/> <!---->
@@ -55,10 +59,15 @@
         <ComboBox x:Name="jobrole" HorizontalAlignment="Left" Margin="10,324,0,0" VerticalAlignment="Top" Width="120" ToolTip="Job" ItemsSource="{Binding Joblist}" SelectedValue="{Binding SelectedContact.JobRole}" SelectedValuePath="Name"/>
         <Button Content="Opslaan" HorizontalAlignment="Left" Margin="10,360,0,0" VerticalAlignment="Top" Width="120" Command="ApplicationCommands.Save" Height="29"/>
         <Button Content="Delete" HorizontalAlignment="Left" Margin="140,360,0,0" VerticalAlignment="Top" Width="55" Height="29" Command="ApplicationCommands.Delete"/>
-
+        <Button Content="Nieuw" HorizontalAlignment="Left" Margin="10,400,0,0" VerticalAlignment="Top" Width="120" Height="25"/>
+        
+        
         <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="66,7,0,0" TextWrapping="Wrap" Text="Zoek op naam" VerticalAlignment="Top" Width="120"/>
         <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="66,35,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding SelectedJob}"/>
         <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="172" Margin="10,88,0,0" VerticalAlignment="Top" Width="176"/>
+        
+        <!--Overzicht van Contactpersonen-->
         <ListBox x:Name="Contactpersonen" Grid.Column="1" Margin="10,68,10,10" ItemsSource="{Binding ContactsList}" SelectedItem="{Binding SelectedContact}" />
+
     </Grid>
 </UserControl>

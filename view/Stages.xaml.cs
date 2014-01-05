@@ -25,15 +25,23 @@ namespace Festival.view
             InitializeComponent();
         }
 
-        //Nieuw podium opslaan, podium aanpassen
-        private void CommandBinding_PodiumOpslaan_Bewerken(object sender, ExecutedRoutedEventArgs e)
+        //Podium aanpassen
+        private void CommandBinding_PodiumBewerken(object sender, ExecutedRoutedEventArgs e)
         {
-            //Is er een podium geselecteerd? Dan is het bewerken.
+            //Is er een podium geselecteerd? Bewerken
             if(GeselecteerdPodium.Text.Count() > 0)
             {
                 Stage.Update(Podiumnaam.Text, GeselecteerdPodium.Text);
             }
 
         }
+
+        //Nieuw Podium aanmken
+        private void CommandBinding_PodiumNieuw(object sender, ExecutedRoutedEventArgs e)
+        {
+            Stage.Add(Podiumnaam.Text);
+        }
+
+
     }
 }

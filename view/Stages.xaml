@@ -6,7 +6,8 @@
         mc:Ignorable="d" 
         d:DesignHeight="300" d:DesignWidth="400">
     <UserControl.CommandBindings>
-        <CommandBinding Command="ApplicationCommands.Save" Executed="CommandBinding_PodiumOpslaan_Bewerken"/>
+        <CommandBinding Command="ApplicationCommands.Save" Executed="CommandBinding_PodiumBewerken"/>
+        <CommandBinding Command="ApplicationCommands.New" Executed="CommandBinding_PodiumNieuw"/>
     </UserControl.CommandBindings>
 
     <Grid>
@@ -20,7 +21,8 @@
         <ComboBox x:Name="GeselecteerdPodium" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="100" ToolTip="Kies podium" ItemsSource="{Binding PodiaList}" SelectedItem="{Binding SelectedPodium}"/>     
         <!--Podium aanpassen-->
         <TextBox x:Name="Podiumnaam" HorizontalAlignment="Left" Height="23" Margin="10,67,0,0" TextWrapping="Wrap" Text="{Binding SelectedPodium.Name}" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Opslaan" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="100" Height="20" Command="ApplicationCommands.Save"/>
+        <Button Content="Bewerken" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="100" Height="20" Command="ApplicationCommands.Save"/>
+        <Button Content="Nieuw" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Width="100" Command="ApplicationCommands.New"/>
 
 
 
@@ -44,7 +46,6 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
 
     </Grid>
 </UserControl>

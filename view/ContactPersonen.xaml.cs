@@ -46,5 +46,11 @@ namespace Festival.view
             ContactPerson b = (ContactPerson)Contactpersonen.SelectedItem;
             ContactPerson.delete(b);
         }
+
+        //Als er op de "nieuw" knop geklikt wordt, komt men hier
+        private void CommandBinding_NewContactPerson(object sender, ExecutedRoutedEventArgs e)
+        {
+            ContactPerson.Add(name.Text, surname.Text, street.Text, city.Text, Convert.ToInt32(zipcode.Text), cellphone.Text, phone.Text, email.Text, jobrole.Text, company.Text);
+        }
     }
 }

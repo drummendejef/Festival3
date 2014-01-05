@@ -102,7 +102,7 @@ namespace Festival.model
         {
             int jobroleid = ContactPersonType.GetContactTypeID(p.JobRole);
 
-            string sql = "UPDATE Werknemers SET Voornaam=@Name, Naam=@Surname, Straat_Nr=@Street, Gemeente=@City, Postcode=@Zipcode, GSM=@Cellphone, JobID=@Jobrole, Bedrijf=@Company, Telefoon=@Phone, Email= WHERE ID=@ID";
+            string sql = "UPDATE Werknemers SET Voornaam=@Name, Naam=@Surname, Straat_Nr=@Street, Gemeente=@City, Postcode=@Zipcode, GSM=@Cellphone, JobID=@Jobrole, Bedrijf=@Company, Telefoon=@Phone, Email=@Email WHERE ID=@ID";
 
 
             DbParameter par1 = Database.AddParameter("@Name", p.Name);
