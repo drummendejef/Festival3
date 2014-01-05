@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Festival.model;
+using Microsoft.Win32;
 
 namespace Festival.view
 {
@@ -42,6 +43,10 @@ namespace Festival.view
             Stage.Add(Podiumnaam.Text);
         }
 
+        //Afbeelding opslaan
+        private void CommandBinding_OpenPicture(object sender, ExecutedRoutedEventArgs e)
+        {
 
+        }
     }
 }

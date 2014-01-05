@@ -8,6 +8,7 @@
     <UserControl.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Save" Executed="CommandBinding_PodiumBewerken"/>
         <CommandBinding Command="ApplicationCommands.New" Executed="CommandBinding_PodiumNieuw"/>
+        <CommandBinding Command="ApplicationCommands.Open" Executed="CommandBinding_OpenPicture"/>
     </UserControl.CommandBindings>
 
     <Grid>
@@ -18,34 +19,40 @@
 
         <!--Lijst met podia-->
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Podia" VerticalAlignment="Top" Width="69"/>
-        <ComboBox x:Name="GeselecteerdPodium" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="100" ToolTip="Kies podium" ItemsSource="{Binding PodiaList}" SelectedItem="{Binding SelectedPodium}"/>     
+        <ComboBox x:Name="GeselecteerdPodium" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="100" ToolTip="Kies podium" ItemsSource="{Binding PodiaList}" SelectedItem="{Binding SelectedPodium}"/>
         <!--Podium aanpassen-->
         <TextBox x:Name="Podiumnaam" HorizontalAlignment="Left" Height="23" Margin="10,67,0,0" TextWrapping="Wrap" Text="{Binding SelectedPodium.Name}" VerticalAlignment="Top" Width="100"/>
         <Button Content="Bewerken" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="100" Height="20" Command="ApplicationCommands.Save"/>
         <Button Content="Nieuw" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Width="100" Command="ApplicationCommands.New"/>
 
-
-
-        <!--Band informatie-->
-
-
-        <Image HorizontalAlignment="Left" Height="75" Margin="10,205,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,90,0,0" TextWrapping="Wrap" Text="Genres" VerticalAlignment="Top" Height="20" Width="62"/>
-        <Image Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="90,234,0,0" VerticalAlignment="Top" Width="22" ToolTip="Facebook"/>
-        <Image Grid.Column="1" HorizontalAlignment="Left" Height="56" Margin="120,224,0,0" VerticalAlignment="Top" Width="60" ToolTip="Twitter"/>
-
-        
         <!--Band info-->
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Band info" VerticalAlignment="Top" Width="68"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding BandList}" SelectedItem="{Binding SelectedBand}"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,67,0,0" TextWrapping="Wrap" Text="{Binding SelectedBand.Name}" VerticalAlignment="Top" Width="120"/>
-        <ListBox x:Name="GenreList" ItemsSource="{Binding GenreSelectedList}" Margin="10,110,65,120" Grid.Column="1">
+        <ComboBox x:Name="SelectedBand" Grid.Column="1" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding BandList}" SelectedItem="{Binding SelectedBand}"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="10,67,0,0" TextWrapping="Wrap" Text="{Binding SelectedBand.Name}" VerticalAlignment="Top" Width="120" />
+        <Label Content="Genre" Grid.Column="1" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" Width="95"/>
+        <ListBox x:Name="GenreList" ItemsSource="{Binding GenreSelectedList}" Margin="10,120,65,110" Grid.Column="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <CheckBox x:Name="genre" Content="{Binding Name}" IsChecked="{Binding isChecked}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <Label Content="Twitter" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,79" Height="26" VerticalAlignment="Bottom"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,60" TextWrapping="Wrap" Text="{Binding SelectedBand.Twitter}" Width="120" Height="23" VerticalAlignment="Bottom"/>
+        <Label Content="Facebook" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,34" Width="75" Height="26" VerticalAlignment="Bottom"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left"  Margin="10,0,0,15" TextWrapping="Wrap" Text="{Binding SelectedBand.Facebook}" Width="120" Height="20" VerticalAlignment="Bottom"/>
+        <Image x:Name="BandLogo" HorizontalAlignment="Left" Margin="90,0,0,25" Width="100" Source="{Binding SelectedBand.Picture}" Height="100" VerticalAlignment="Bottom"/>
+        <Button Content="Kies logo" HorizontalAlignment="Left" Margin="100,0,0,5" Width="75" Height="18" VerticalAlignment="Bottom" Command="ApplicationCommands.Open"/>
+
+
+
+
+
+
+
+
+
+
 
     </Grid>
 </UserControl>

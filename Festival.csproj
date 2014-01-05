@@ -75,6 +75,7 @@
     <Compile Include="model\Database.cs" />
     <Compile Include="model\Festival.cs" />
     <Compile Include="model\Genre.cs" />
+    <Compile Include="model\ImgPathToByteConverter.cs" />
     <Compile Include="model\LineUp.cs" />
     <Compile Include="model\Stage.cs" />
     <Compile Include="model\Ticket.cs" />

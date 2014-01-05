@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Festival.model;
 using Festival.view;
+using Microsoft.Win32;
 
 namespace Festival.viewmodel
 {
@@ -78,6 +79,22 @@ namespace Festival.viewmodel
             get { return _genreselectedlist; }
             set { _genreselectedlist = value; }
         }
+
+        //Foto inladen
+        //private void Browse(StagesVM stagesvm)
+        //{
+        //    OpenFileDialog dlg = new OpenFileDialog();
+        //    dlg.DefaultExt = ".jpg";
+        //    dlg.Filter = "Image files (*.jpg, *.jpeg, *.png, *.gif)|*.jpg; *.jpeg; *.png; *.gif";
+
+        //    Nullable<bool> result = dlg.ShowDialog();
+        //    if (result == true)
+        //    {
+        //        ImgPathToByteConverter converter = new ImgPathToByteConverter();
+        //        SelectedBand.Picture = (byte[])converter.Convert(dlg.FileName,null,null,null);//, null, null, null);
+        //        OnPropertyChanged("SelectedBand");
+        //    }
+        //}
       
     }
 }
