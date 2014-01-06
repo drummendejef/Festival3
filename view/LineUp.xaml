@@ -43,7 +43,17 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
 
-        <ContentControl Grid.Row="2" Content="{Binding CurrentPage}" />
+        <!--<ContentControl Grid.Row="2" Content="{Binding CurrentPage}" />-->
+        <ListView Name="Lineup" Grid.Row="2" SelectedItem="{Binding SelectedSlot}" ItemsSource="{Binding LineUps}" Margin="10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Band" Width="auto" DisplayMemberBinding="{Binding BandID}" />
+                    <GridViewColumn Header="Stage" Width="auto" DisplayMemberBinding="{Binding StageID}"/>
+                    <GridViewColumn Header="From" Width="auto" DisplayMemberBinding="{Binding StartDate}"/>
+                    <GridViewColumn Header="Till" Width="auto" DisplayMemberBinding="{Binding EndDate}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 
 </UserControl>
