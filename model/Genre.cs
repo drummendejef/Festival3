@@ -6,17 +6,18 @@ using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
 namespace Festival.model
 {
-    class Genre : IDataErrorInfo
+    class Genre : IDataErrorInfo, INotifyPropertyChanged
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        [Required(ErrorMessage = "The Genrenaam is required")]
+        [Required(ErrorMessage = "De Genrenaam is required")]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "The length must be between 2 and 50 characters")]
         public bool isChecked { get; set; }
 
@@ -56,9 +57,7 @@ namespace Festival.model
             Console.WriteLine("Nieuw Genre opgeslagen");
         }
 
-        //******************************
-        //UNDER CONSTRUCTION DATAVALIDATION
-        //******************************
+
         //IDataErrorinfo interface geimplementeerd.
         public string Error
         {
@@ -79,6 +78,19 @@ namespace Festival.model
                     return ex.Message;
                 }
                 return String.Empty;
+            }
+        }
+        //Einde data validatie
+
+
+        // PROPERTY CHANGED EVENTHANDLER
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
 

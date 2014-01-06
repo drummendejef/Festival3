@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Festival.model
 {
-    class Band
+    class Band : INotifyPropertyChanged
     {
         public int ID { get; set; }
         public string Name { get; set; }
@@ -71,6 +73,30 @@ namespace Festival.model
             string result = "";
             result += Name;
             return result;
+        }
+
+        //Omzetten ID van Band naar Band band
+        public static Band GetBand(int id)
+        {
+            foreach (Band band in GetBands())
+            {
+                if (band.ID == id) return band;
+            }
+
+            Console.WriteLine("Probleem bij omzetten van ID naar stage in stages.");
+            return null;
+        }
+
+
+        // PROPERTY CHANGED EVENTHANDLER
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
 

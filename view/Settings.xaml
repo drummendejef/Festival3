@@ -67,8 +67,10 @@
         <Button Content="Opslaan" Grid.Column="2" Margin="5,65,5,0" Grid.Row="1" VerticalAlignment="Top" Command="ApplicationCommands.New"/>
 
         <!--Podium toevoegen-->
+        <Label Content="Voeg Podium Toe" Grid.Column="2" HorizontalAlignment="Left" Margin="10,162,10,0" Grid.Row="1" VerticalAlignment="Top" Width="115"/>
         <TextBox x:Name="AddPodiumnaam" Height="23" Margin="5,193,5,0" TextWrapping="Wrap" Text="Voeg podium toe" VerticalAlignment="Top" Grid.Column="2" Grid.Row="1" GotFocus="Clear_Textbox"/>
         <Button Content="Voeg toe" Margin="5,223,5,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2" Command="ApplicationCommands.Copy"/>
+       
 
 
 

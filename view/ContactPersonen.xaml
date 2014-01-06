@@ -56,18 +56,18 @@
         <TextBox x:Name="phone" HorizontalAlignment="Left" Height="23" Margin="10,237,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Phone, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120"/>
         <Label Content="Email" HorizontalAlignment="Left" Margin="135,275,0,0" VerticalAlignment="Top" Width="57"/>
         <TextBox x:Name="email" HorizontalAlignment="Left" Height="23" Margin="10,278,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Email, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="jobrole" HorizontalAlignment="Left" Margin="10,324,0,0" VerticalAlignment="Top" Width="120" ToolTip="Job" ItemsSource="{Binding Joblist}" SelectedValue="{Binding SelectedContact.JobRole}" SelectedValuePath="Name"/>
+        <ComboBox x:Name="jobrole" HorizontalAlignment="Left" Margin="10,324,0,0" VerticalAlignment="Top" Width="120" ToolTip="Job" ItemsSource="{Binding Joblist, UpdateSourceTrigger=PropertyChanged}" SelectedValue="{Binding SelectedContact.JobRole, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Name"/>
         <Button Content="Opslaan" HorizontalAlignment="Left" Margin="10,360,0,0" VerticalAlignment="Top" Width="120" Command="ApplicationCommands.Save" Height="29"/>
         <Button Content="Delete" HorizontalAlignment="Left" Margin="140,360,0,0" VerticalAlignment="Top" Width="55" Height="29" Command="ApplicationCommands.Delete"/>
-        <Button Content="Nieuw" HorizontalAlignment="Left" Margin="10,400,0,0" VerticalAlignment="Top" Width="120" Height="25"/>
+        <Button Content="Nieuw" HorizontalAlignment="Left" Margin="10,400,0,0" VerticalAlignment="Top" Width="120" Height="25" Command="ApplicationCommands.New"/>
         
         
         <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="66,7,0,0" TextWrapping="Wrap" Text="Zoek op naam" VerticalAlignment="Top" Width="120"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="66,35,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding SelectedJob}"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="66,35,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding SelectedJob, UpdateSourceTrigger=PropertyChanged}"/>
         <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="172" Margin="10,88,0,0" VerticalAlignment="Top" Width="176"/>
         
         <!--Overzicht van Contactpersonen-->
-        <ListBox x:Name="Contactpersonen" Grid.Column="1" Margin="10,68,10,10" ItemsSource="{Binding ContactsList}" SelectedItem="{Binding SelectedContact}" />
+        <ListBox x:Name="Contactpersonen" Grid.Column="1" Margin="10,68,10,10" ItemsSource="{Binding ContactsList, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedContact, UpdateSourceTrigger=PropertyChanged}" />
 
     </Grid>
 </UserControl>

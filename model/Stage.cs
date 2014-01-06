@@ -80,6 +80,18 @@ namespace Festival.model
             }
         }
 
+        //Omzetten ID naar Stage stage
+        public static Stage GetStage(int id)
+        {
+            foreach (Stage stage in GetStages())
+            {
+                if (stage.ID == id) return stage;
+            }
+
+            Console.WriteLine("Probleem bij omzetten van ID naar stage in stages.");
+            return null;
+        }
+
         /* ----------------------------------------------------------------- */
         // PROPERTY CHANGED EVENTHANDLER
         /* ----------------------------------------------------------------- */

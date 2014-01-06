@@ -46,7 +46,7 @@ namespace Festival.view
         //Afbeelding opslaan
         private void CommandBinding_OpenPicture(object sender, ExecutedRoutedEventArgs e)
         {
-
+            //Verwijderd wegens errors.
         }
     }
 }

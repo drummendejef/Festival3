@@ -16,6 +16,7 @@ namespace Festival.model
     class Festival : INotifyPropertyChanged, IDataErrorInfo
     {
         public DateTime StartDate { get; set; }
+        
         private DateTime _enddate;
         public DateTime EndDate
         {

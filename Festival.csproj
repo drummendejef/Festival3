@@ -81,12 +81,16 @@
     <Compile Include="model\Ticket.cs" />
     <Compile Include="model\TicketType.cs" />
     <Compile Include="viewmodel\ContactPersonenVM.cs" />
+    <Compile Include="viewmodel\LineUpVM.cs" />
     <Compile Include="viewmodel\SettingsVM.cs" />
     <Compile Include="viewmodel\StagesVM.cs" />
     <Compile Include="viewmodel\StartPageVM.cs" />
     <Compile Include="viewmodel\TicketsVM.cs" />
     <Compile Include="view\ContactPersonen.xaml.cs">
       <DependentUpon>ContactPersonen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="view\LineUp.xaml.cs">
+      <DependentUpon>LineUp.xaml</DependentUpon>
     </Compile>
     <Compile Include="view\Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
@@ -105,6 +109,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="view\ContactPersonen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="view\LineUp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

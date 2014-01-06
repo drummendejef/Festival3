@@ -14,6 +14,7 @@ namespace Festival.viewmodel
         {
             Pages.Add(new StartPageVM());
             Pages.Add(new ContactPersonenVM());
+            Pages.Add(new LineUpVM());
             Pages.Add(new StagesVM());
             Pages.Add(new TicketsVM());
             Pages.Add(new SettingsVM());
