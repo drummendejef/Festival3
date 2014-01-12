@@ -12,7 +12,7 @@
         <CommandBinding Command="ApplicationCommands.Delete" Executed="CommandBinding_DeleteContactPerson" />
         <CommandBinding Command="ApplicationCommands.New" Executed="CommandBinding_NewContactPerson" />
     </UserControl.CommandBindings>
-    
+
     <!--Template ect ivm data validatie-->
     <UserControl.Resources>
         <ControlTemplate x:Key="ErrorTemplate">
@@ -38,11 +38,12 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
+
         <!--Gegevens van Contactpersonen-->
         <TextBlock HorizontalAlignment="Left" Margin="135,14,0,0" TextWrapping="Wrap" Text="Voornaam" VerticalAlignment="Top" Width="96" Grid.ColumnSpan="2"/>
         <Label Content="Naam:" Margin="135,38,21,338"/>
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/> <!---->
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
+        <!---->
         <TextBox x:Name="surname" HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Surname, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
         <Label Content="Adres:" Margin="135,88,22,289"/>
         <TextBox x:Name="street" HorizontalAlignment="Left" Height="23" Margin="10,88,0,0" TextWrapping="Wrap" Text="{Binding SelectedContact.Street, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" VerticalAlignment="Top" Width="120" Validation.ErrorTemplate="{StaticResource ErrorTemplate}"/>
@@ -61,13 +62,15 @@
         <Button Content="Delete" HorizontalAlignment="Left" Margin="140,360,0,0" VerticalAlignment="Top" Width="55" Height="29" Command="ApplicationCommands.Delete"/>
         <Button Content="Nieuw" HorizontalAlignment="Left" Margin="10,400,0,0" VerticalAlignment="Top" Width="120" Height="25" Command="ApplicationCommands.New"/>
         
-        
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="66,7,0,0" TextWrapping="Wrap" Text="Zoek op naam" VerticalAlignment="Top" Width="120"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="66,35,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding SelectedJob, UpdateSourceTrigger=PropertyChanged}"/>
-        <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="172" Margin="10,88,0,0" VerticalAlignment="Top" Width="176"/>
-        
+        <!--Zoek op naam-->
+        <TextBox Name="Zoek" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,7,0,0" TextWrapping="Wrap" Text="{Binding SearchName}" VerticalAlignment="Top" Width="120" GotFocus="Clear_Textbox"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Joblist, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SearchJob}"/>
+        <Button Content="Zoek" Grid.Column="1" HorizontalAlignment="Left" Margin="140,10,0,0" VerticalAlignment="Top" Width="50" Height="45" Command="{Binding DataContext.SearchContactCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+
         <!--Overzicht van Contactpersonen-->
+        <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="172" Margin="10,88,0,0" VerticalAlignment="Top" Width="176"/>
         <ListBox x:Name="Contactpersonen" Grid.Column="1" Margin="10,68,10,10" ItemsSource="{Binding ContactsList, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedContact, UpdateSourceTrigger=PropertyChanged}" />
+
 
     </Grid>
 </UserControl>

@@ -52,5 +52,13 @@ namespace Festival.view
         {
             ContactPerson.Add(name.Text, surname.Text, street.Text, city.Text, Convert.ToInt32(zipcode.Text), cellphone.Text, phone.Text, email.Text, jobrole.Text, company.Text);
         }
+
+        //Textbox leegmaken op focus
+        private void Clear_Textbox(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= Clear_Textbox;
+        }
     }
 }

@@ -163,6 +163,40 @@ namespace Festival.model
             }
         }
 
+        //Contactpersoon opzoeken
+        public static ObservableCollection<ContactPerson> SearchContactPerson(string name)
+        {
+            try
+            {
+                //Contactpersonen lijst aanmaken
+                ObservableCollection<ContactPerson> results = new ObservableCollection<ContactPerson>();
+
+                //Data ophalen
+                DbParameter param = Database.AddParameter("@Name", "%" + name + "%");
+                DbDataReader reader = Database.GetData("SELECT * FROM Werknemers WHERE Voornaam LIKE @Name", param);
+                //Alle opgehaalde contactpersonen met die naam aanmaken en in lijst steken.
+                foreach (DbDataRecord record in reader)
+                {
+                    ContactPerson contact = Create(record);
+                    results.Add(contact);
+                }
+
+                //Sluiten database
+                if (reader != null)
+                    reader.Close();
+                //terugsturen resultaten.
+                return results;
+            }
+
+            //fail
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            //Gefaald om op te halen.
+            return null;
+        }
+
         /* ----------------------------------------------------------------- */
         // PROPERTY CHANGED EVENTHANDLER
         /* ----------------------------------------------------------------- */
