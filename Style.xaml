@@ -35,6 +35,12 @@
     <Color x:Key="ShadeBrushGradient2">#FFD1D4D6</Color>
     <Color x:Key="ShadeBrushGradient3">#FFEDF8FF</Color>
 
+    <!--Voorgrond disabled-->
+    <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#FF636363"/>
+    
+    <!--Letterkleur-->
+    <SolidColorBrush x:Key="GlyphBrush" Color="{StaticResource WhiteColor}"/>
+
     <!--Achtergrond kleuren-->
     <LinearGradientBrush x:Key="NormalBrush" EndPoint="0.5,1" StartPoint="0.5,0">
         <GradientStop Color="{StaticResource NormalBrushGradient1}" Offset="0" />
@@ -57,6 +63,19 @@
         <GradientStop Color="{StaticResource SelectedBackgroundGradient2}" Offset="0.38" />
         <GradientStop Color="{StaticResource SelectedBackgroundGradient3}" Offset="0.384" />
         <GradientStop Color="{StaticResource SelectedBackgroundGradient4}" Offset="1" />
+    </LinearGradientBrush>
+
+    <!--Achtergrond disabled-->
+    <LinearGradientBrush x:Key="DisabledBackgroundBrush"
+                       EndPoint="0.5,1"
+                       StartPoint="0.5,0">
+        <GradientStop Color="#FFFFFFFF" />
+        <GradientStop Color="#FF62676A"
+                  Offset="1" />
+        <GradientStop Color="#FFD1D4D6"
+                  Offset="0.41800001263618469" />
+        <GradientStop Color="#FFA9AFB5"
+                  Offset="0.425" />
     </LinearGradientBrush>
 
     <!--Als je over iets hovert-->
@@ -310,7 +329,12 @@
         <Setter Property="Background" Value="{DynamicResource ShadeBrush}"/>
         <Setter Property="Validation.ErrorTemplate" Value="{DynamicResource ErrorTemplate}" /><!--{DynamicResource ErrorTemplate}"/>-->
     </Style>
-    
+
+    <!--combobox template-->
+    <ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
+        <Border x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}"/>
+    </ControlTemplate>
+
     <!--VALIDATIE ERROR-->
     <!--<Style x:Key="TextboxError" TargetType="{x:Type TextBox}">
 
