@@ -63,9 +63,11 @@
         <Button Content="Nieuw" HorizontalAlignment="Left" Margin="10,400,0,0" VerticalAlignment="Top" Width="120" Height="25" Command="ApplicationCommands.New"/>
         
         <!--Zoek op naam-->
-        <TextBox Name="Zoek" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,7,0,0" TextWrapping="Wrap" Text="{Binding SearchName}" VerticalAlignment="Top" Width="120" GotFocus="Clear_Textbox"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Joblist, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SearchJob}"/>
-        <Button Content="Zoek" Grid.Column="1" HorizontalAlignment="Left" Margin="140,10,0,0" VerticalAlignment="Top" Width="50" Height="45" Command="{Binding DataContext.SearchContactCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+        <TextBox Name="ZoekopNaam" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,7,0,0" TextWrapping="Wrap" Text="{Binding SearchName}" VerticalAlignment="Top" Width="120" GotFocus="Clear_Textbox"/>
+        <Button Content="Zoek" Grid.Column="1" Margin="140,10,10,0" VerticalAlignment="Top" Height="20" Command="{Binding DataContext.SearchContactCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+        <ComboBox Name="ZoekopJob" Grid.Column="1" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Joblist, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SearchJob}"/>
+        <Button Content="Zoek" Grid.Column="1" Margin="140,35,10,0" VerticalAlignment="Top" Height="20" Command="{Binding DataContext.SearchJobCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+
 
         <!--Overzicht van Contactpersonen-->
         <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="172" Margin="10,88,0,0" VerticalAlignment="Top" Width="176"/>

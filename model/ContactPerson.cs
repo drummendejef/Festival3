@@ -163,7 +163,7 @@ namespace Festival.model
             }
         }
 
-        //Contactpersoon opzoeken
+        //Contactpersoon opzoeken op naam
         public static ObservableCollection<ContactPerson> SearchContactPerson(string name)
         {
             try
@@ -174,6 +174,50 @@ namespace Festival.model
                 //Data ophalen
                 DbParameter param = Database.AddParameter("@Name", "%" + name + "%");
                 DbDataReader reader = Database.GetData("SELECT * FROM Werknemers WHERE Voornaam LIKE @Name", param);
+                //Alle opgehaalde contactpersonen met die naam aanmaken en in lijst steken.
+                foreach (DbDataRecord record in reader)
+                {
+                    ContactPerson contact = Create(record);
+                    results.Add(contact);
+                }
+
+                //Sluiten database
+                if (reader != null)
+                    reader.Close();
+                //terugsturen resultaten.
+                return results;
+            }
+
+            //fail
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            //Gefaald om op te halen.
+            return null;
+        }
+
+        //Contactpersoon opzoeken op job
+        public static ObservableCollection<ContactPerson> SearchContactJob(string job)
+        {
+            try
+            {
+                //Contactpersonen lijst aanmaken
+                ObservableCollection<ContactPerson> results = new ObservableCollection<ContactPerson>();
+                DbDataReader reader;
+
+                if (job == "")//Geen job aangeduid
+                {//Alle personen ophalen, geen job aangeduid betekend iedereen weergeven.
+                    reader = Database.GetData("SELECT * FROM Werknemers");
+                }
+                else //Wel job aangeduid
+                {
+                    int jobid = ContactPersonType.GetContactTypeID(job);
+
+                    //Data ophalen
+                    DbParameter param = Database.AddParameter("@JobID", "%" + jobid + "%");
+                    reader = Database.GetData("SELECT * FROM Werknemers WHERE JobID LIKE @JobID", param);
+                }
                 //Alle opgehaalde contactpersonen met die naam aanmaken en in lijst steken.
                 foreach (DbDataRecord record in reader)
                 {

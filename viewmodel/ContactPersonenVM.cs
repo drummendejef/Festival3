@@ -17,6 +17,10 @@ namespace Festival.viewmodel
         {
             ContactsList = ContactPerson.GetContacts();
             Joblist = ContactPersonType.GetContactTypes();
+            ContactPersonType test = new ContactPersonType();
+            test.Name = "";
+            test.ID = 0;
+            Joblist.Add(test);
             SearchName = "Zoek naam";
         }
 
@@ -73,10 +77,10 @@ namespace Festival.viewmodel
             { 
                 //Zoekt hij op naam of job?
                 //
-                if (SearchJob == "")
+                //if (SearchJob == "")
                     return new RelayCommand<ContactPersonenVM>(SearchContact);
-                else
-                    return new RelayCommand<ContactPersonenVM>(SearchContactJob);
+                //else
+                //    return new RelayCommand<ContactPersonenVM>(SearchContactJob);
 
             }
         }
@@ -87,6 +91,8 @@ namespace Festival.viewmodel
             ContactsList = ContactPerson.SearchContactPerson(SearchName);
         }
 
+
+
         //Persoon op beroep zoeken
         private string _searchjob;
         public string SearchJob
@@ -95,10 +101,18 @@ namespace Festival.viewmodel
             set { _searchjob = value; OnPropertyChanged("SearchJob"); }
         }
 
+        public ICommand SearchJobCommand
+        {
+            get
+            {
+                return new RelayCommand<ContactPersonenVM>(SearchContactJob);
+            }
+        }
+
         //Zoek contactpersonen op job
         private void SearchContactJob(ContactPersonenVM contactvm)
         {
-            //ContactList = ContactPerson.SearchContactJob(SearchJob);
+            ContactsList = ContactPerson.SearchContactJob(SearchJob);
         }
 
 

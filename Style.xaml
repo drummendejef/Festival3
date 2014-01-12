@@ -38,7 +38,7 @@
     <!--Voorgrond disabled-->
     <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#FF636363"/>
     
-    <!--Letterkleur-->
+    <!--Kleur van drop-driehoekje-->
     <SolidColorBrush x:Key="GlyphBrush" Color="{StaticResource WhiteColor}"/>
 
     <!--Achtergrond kleuren-->
