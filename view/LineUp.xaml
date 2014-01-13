@@ -36,21 +36,21 @@
             </ItemsControl.ItemsPanel>
 
             <!-- Add the buttons -->
-            <ItemsControl.ItemTemplate>
+            <!--<ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Button Margin="0" Padding="10, 5" Content="{Binding Name}" Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" CommandParameter="{Binding}"/>
                 </DataTemplate>
-            </ItemsControl.ItemTemplate>
+            </ItemsControl.ItemTemplate>-->
         </ItemsControl>
 
         <!--<ContentControl Grid.Row="2" Content="{Binding CurrentPage}" />-->
-        <ListView Name="Lineup" Grid.Row="2" SelectedItem="{Binding SelectedSlot}" ItemsSource="{Binding LineUps}" Margin="10">
+        <ListView Name="Lineup" Grid.Row="2" SelectedItem="{Binding SelectedSlot}" ItemsSource="{Binding LineUps, UpdateSourceTrigger=PropertyChanged}" Margin="10">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Band" Width="auto" DisplayMemberBinding="{Binding BandID}" />
-                    <GridViewColumn Header="Stage" Width="auto" DisplayMemberBinding="{Binding StageID}"/>
-                    <GridViewColumn Header="From" Width="auto" DisplayMemberBinding="{Binding StartDate}"/>
-                    <GridViewColumn Header="Till" Width="auto" DisplayMemberBinding="{Binding EndDate}"/>
+                    <GridViewColumn Header="Band" Width="auto" DisplayMemberBinding="{Binding Band}" />
+                    <GridViewColumn Header="Stage" Width="auto" DisplayMemberBinding="{Binding Stage}"/>
+                    <GridViewColumn Header="From" Width="auto" DisplayMemberBinding="{Binding From, StringFormat='HH mm'}"/>
+                    <GridViewColumn Header="Till" Width="auto" DisplayMemberBinding="{Binding Until, StringFormat='HH mm'}"/>
                 </GridView>
             </ListView.View>
         </ListView>

@@ -33,7 +33,7 @@ namespace Festival.viewmodel
             for (int i = 0; i < 60; i += 5)
                 Minutes.Add(i);
 
-            //CancelUpdateSlot(this);
+            
 
             SelectedSlot = new LineUp();
             StartDate = DateTime.Now;
