@@ -10,6 +10,7 @@
         <CommandBinding Command="ApplicationCommands.Save" Executed="CommandBinding_Save" />
         <CommandBinding Command="ApplicationCommands.New" Executed="CommandBinding_GenreSave" />
         <CommandBinding Command="ApplicationCommands.Copy" Executed="CommandBinding_PodiumSave" />
+        <CommandBinding Command="ApplicationCommands.Print" Executed="CommandBinding_BeroepEdit" />
     </UserControl.CommandBindings>
     <UserControl.Resources>
         <ControlTemplate x:Key="ErrorTemplate">
@@ -59,7 +60,8 @@
         <Button Content="Opslaan" Margin="10,110,10,0" Grid.Row="1" Grid.Column="1" Command="ApplicationCommands.Save" Height="18" VerticalAlignment="Top"/>
 
         <!--Beroep aanpassen-->
-        <ComboBox Grid.Column="1" Margin="10,28,10,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <ComboBox x:Name="SelectedJob" Grid.Column="1" Margin="10,28,10,0" Grid.Row="1" VerticalAlignment="Top" ItemsSource="{Binding JobList}" SelectedItem="{Binding SelectedJob}"/>
+        <Button Content="Wijzigen" Grid.Column="1" Margin="10,138,10,0" Grid.Row="1" VerticalAlignment="Top" Command="ApplicationCommands.Print"/>
 
         <!--Genre toevoegen-->
         <Label Content="Genre toevoegen" Grid.Column="2" Margin="5,2,5,0" Grid.Row="1" VerticalAlignment="Top"/>
@@ -70,7 +72,8 @@
         <Label Content="Voeg Podium Toe" Grid.Column="2" HorizontalAlignment="Left" Margin="10,162,10,0" Grid.Row="1" VerticalAlignment="Top" Width="115"/>
         <TextBox x:Name="AddPodiumnaam" Height="23" Margin="5,193,5,0" TextWrapping="Wrap" Text="Voeg podium toe" VerticalAlignment="Top" Grid.Column="2" Grid.Row="1" GotFocus="Clear_Textbox"/>
         <Button Content="Voeg toe" Margin="5,223,5,0" VerticalAlignment="Top" Grid.Row="1" Grid.Column="2" Command="ApplicationCommands.Copy"/>
-       
+        
+
 
 
 

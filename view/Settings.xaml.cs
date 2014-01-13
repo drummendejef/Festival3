@@ -82,6 +82,16 @@ namespace Festival.view
                 Console.WriteLine("Geen Podiumnaam ingegeven");
         }
 
+        //Bestaand podium bewerken
+        private void CommandBinding_BeroepEdit(object sender, ExecutedRoutedEventArgs e)
+        {
+            ContactPersonType uberoep = new ContactPersonType();
+            uberoep.ID = ContactPersonType.GetContactTypeID(SelectedJob.Text);
+            uberoep.Name = AddJob.Text;
+
+            ContactPersonType.Update(uberoep);
+        }
+
         //Textbox leegmaken op focus
         private void Clear_Textbox(object sender, RoutedEventArgs e)
         {

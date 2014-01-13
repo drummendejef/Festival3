@@ -62,18 +62,16 @@ namespace Festival.model
         }
 
         //Updaten van naam
-        public static void Update(string nieuwenaam, string oudenaam)
+        public static void Update(Stage s)
         {
             foreach (Stage stage in GetStages())
             {
-                if (stage.Name == oudenaam)
+                if (stage.ID == s.ID)
                 {
-                    string sql = "UPDATE Podia SET Naam=@Nieuw WHERE Naam=@Oud";
-                    DbParameter param1 = Database.AddParameter("@Nieuw", nieuwenaam);
-                    DbParameter param2 = Database.AddParameter("@Oud", oudenaam);
+                    string sql = "UPDATE Podia SET Naam=@Nieuw WHERE ID=@Id";
+                    DbParameter param1 = Database.AddParameter("@Nieuw", s.Name);
+                    DbParameter param2 = Database.AddParameter("@Id", s.ID);
                     Database.ModifyData(sql, param1, param2);
-
-                    stage.Name = nieuwenaam;
 
                     Console.WriteLine("Podiumnaam geupdate");
                 }
@@ -90,6 +88,18 @@ namespace Festival.model
 
             Console.WriteLine("Probleem bij omzetten van ID naar stage in stages.");
             return null;
+        }
+
+        //Omzetten naam naar ID
+        public static int GetStageID(string naam)
+        {
+            foreach (Stage stage in GetStages())
+            {
+                if (stage.Name == naam) return stage.ID;
+            }
+
+            Console.WriteLine("Probleem bij omzetten van naam naar ID in stages.");
+            return 0;
         }
 
         /* ----------------------------------------------------------------- */

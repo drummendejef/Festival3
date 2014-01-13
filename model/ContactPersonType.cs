@@ -108,5 +108,17 @@ namespace Festival.model
 
             Console.WriteLine("Nieuw jobtype opgeslagen");
         }
+
+        //Bestaande job bewerken.
+        public static void Update(ContactPersonType t)
+        {
+            string sql = "UPDATE Jobs SET Job=@Job WHERE ID=@Id";
+
+            DbParameter par1 = Database.AddParameter("@Job", t.Name);
+            DbParameter par2 = Database.AddParameter("@Id", t.ID);
+            Database.ModifyData(sql, par1, par2);
+
+            Console.WriteLine("Jobnaam aangepast");
+        }
     }
 }

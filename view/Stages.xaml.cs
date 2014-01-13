@@ -32,7 +32,11 @@ namespace Festival.view
             //Is er een podium geselecteerd? Bewerken
             if(GeselecteerdPodium.Text.Count() > 0)
             {
-                Stage.Update(Podiumnaam.Text, GeselecteerdPodium.Text);
+                Stage ustage = new Stage();
+                ustage.ID = Stage.GetStageID(GeselecteerdPodium.Text);
+                ustage.Name = Podiumnaam.Text;
+
+                Stage.Update(ustage);
             }
 
         }

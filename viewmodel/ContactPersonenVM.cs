@@ -74,14 +74,8 @@ namespace Festival.viewmodel
         public ICommand SearchContactCommand
         {
             get 
-            { 
-                //Zoekt hij op naam of job?
-                //
-                //if (SearchJob == "")
-                    return new RelayCommand<ContactPersonenVM>(SearchContact);
-                //else
-                //    return new RelayCommand<ContactPersonenVM>(SearchContactJob);
-
+            {
+                  return new RelayCommand<ContactPersonenVM>(SearchContact);
             }
         }
 
