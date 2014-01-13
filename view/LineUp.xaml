@@ -49,8 +49,9 @@
                 <GridView>
                     <GridViewColumn Header="Band" Width="auto" DisplayMemberBinding="{Binding Band}" />
                     <GridViewColumn Header="Stage" Width="auto" DisplayMemberBinding="{Binding Stage}"/>
-                    <GridViewColumn Header="From" Width="auto" DisplayMemberBinding="{Binding From, StringFormat='HH mm'}"/>
-                    <GridViewColumn Header="Till" Width="auto" DisplayMemberBinding="{Binding Until, StringFormat='HH mm'}"/>
+                    <GridViewColumn Header="Datum" Width="auto" DisplayMemberBinding="{Binding Date, StringFormat='dd MMM'}" />
+                    <GridViewColumn Header="Van" Width="auto" DisplayMemberBinding="{Binding From, StringFormat='HH mm'}"/>
+                    <GridViewColumn Header="Tot" Width="auto" DisplayMemberBinding="{Binding Until, StringFormat='HH mm'}"/>
                 </GridView>
             </ListView.View>
         </ListView>
