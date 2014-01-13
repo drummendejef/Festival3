@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:Festival.viewmodel"
         xmlns:v="clr-namespace:Festival.view"
-        Title="Project: Business Applications (Joren Vandamme - 2NMCT2)" Height="550" Width="650">
+        Title="Project: Business Applications (Joren Vandamme - 2NMCT2)" Height="550" Width="675">
     <Window.DataContext>
         <vm:ApplicationVM />
     </Window.DataContext>
